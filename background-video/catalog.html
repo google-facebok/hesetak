@@ -1,0 +1,522 @@
+<script src="https://cdn.tailwindcss.com"></script>
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+<nav class="flex items-center justify-between px-4 md:px-8 py-4 shadow-sm bg-white sticky top-0 z-50">
+    <div class="flex items-center gap-2 md:gap-4">
+        <!-- Mobile Menu Button -->
+        <button id="mobileMenuBtn" class="lg:hidden text-gray-600 focus:outline-none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+            </svg>
+        </button>
+
+        <div class="font-bold text-xl md:text-2xl text-[#4D8076]" data-lang="logo_name">حصتك<span
+                class="text-[#D98E73]">.</span></div>
+        <div class="h-10 w-[1px] bg-gray-200 mx-1 md:mx-2 hidden sm:block"></div>
+        <div class="text-[8px] md:text-[10px] leading-tight text-gray-500 hidden sm:block" data-lang="accredited_by">
+            المنصة معتمدة من:<br>
+            <span class="font-bold text-gray-700 text-[10px] md:text-[12px]" data-lang="center_name">المركز الوطني
+                للتعليم الإلكتروني</span>
+        </div>
+    </div>
+
+    <div class="hidden lg:flex items-center gap-3">
+        <button onclick="window.location.href='video.html'"
+            class="bg-[#D98E73] text-white px-5 py-2 rounded-full flex items-center gap-2 hover:bg-[#c57d63] transition shrink-0">
+            <span data-lang="nav_videos"><span>🎥</span> فيديوهات تعليمية</span>
+        </button>
+        <button onclick="window.location.href='boox.html'"
+            class="border border-gray-300 text-gray-600 px-5 py-2 rounded-full flex items-center gap-2 hover:bg-gray-50 shrink-0">
+            <span data-lang="nav_gifts"><span>🎁</span> بطاقات هدايا</span>
+        </button>
+        <div class="relative inline-block">
+            <span onclick="toggleMenu()" class="font-bold text-gray-400 px-2 cursor-pointer hover:text-gray-600"
+                data-lang="lang_toggle">
+                ع
+            </span>
+            <div id="langMenu" class="hidden absolute right-0 mt-2 w-32 bg-white border rounded shadow">
+                <p class="px-3 py-2 hover:bg-gray-100 cursor-pointer" onclick="changeLanguage('ar')">العربية</p>
+                <p class="px-3 py-2 hover:bg-gray-100 cursor-pointer" onclick="changeLanguage('en')">English</p>
+                <p class="px-3 py-2 hover:bg-gray-100 cursor-pointer" onclick="changeLanguage('fr')">Français</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="flex items-center gap-2 md:gap-4">
+        <button onclick="window.location.href='login.html'"
+            class="bg-[#4D8076] text-white px-4 md:px-8 py-2 rounded-full font-bold hover:bg-[#3d665e] transition text-sm md:text-base"
+            data-lang="subscribe">
+            اشترك معنا
+        </button>
+        <button onclick="window.location.href='login2.html'"
+            class="bg-gray-100 text-gray-700 px-4 md:px-6 py-2 rounded-full font-medium hover:bg-gray-200 text-sm md:text-base hidden sm:block"
+            data-lang="login">
+            دخول
+        </button>
+        <div class="relative cursor-pointer">
+            <span onclick="window.location.href='cart.html'"
+                class="absolute -top-2 -right-2 bg-black text-white text-[10px] w-5 h-5 flex items-center justify-center rounded-full">0</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-600" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+            </svg>
+        </div>
+    </div>
+
+    <!-- Mobile Side Menu -->
+    <div id="sideMenu" class="fixed inset-0 bg-black bg-opacity-50 z-[60] hidden transition-opacity">
+        <div class="fixed top-0 right-0 h-full w-64 bg-white shadow-lg p-6 flex flex-col gap-6 transform translate-x-full transition-transform duration-300"
+            id="sideMenuContent">
+            <button id="closeMenuBtn" class="self-start text-gray-600">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+            <div class="flex flex-col gap-4">
+                <a href="video.html" class="flex items-center gap-2 text-lg font-bold text-gray-700"
+                    data-lang="nav_videos"><span>🎥</span>
+                    فيديوهات تعليمية</a>
+                <a href="boox.html" class="flex items-center gap-2 text-lg font-bold text-gray-700"
+                    data-lang="nav_gifts"><span>🎁</span>
+                    بطاقات هدايا</a>
+                <a href="login2.html" class="flex items-center gap-2 text-lg font-bold text-gray-700 sm:hidden"
+                    data-lang="login"><span>👤</span>
+                    دخول</a>
+                <hr>
+                <div class="flex flex-col gap-2">
+                    <p class="font-bold text-gray-400" data-lang="lang_label">اللغة</p>
+                    <p class="px-3 py-2 hover:bg-gray-100 cursor-pointer rounded" onclick="changeLanguage('ar')">
+                        العربية</p>
+                    <p class="px-3 py-2 hover:bg-gray-100 cursor-pointer rounded" onclick="changeLanguage('en')">
+                        English</p>
+                    <p class="px-3 py-2 hover:bg-gray-100 cursor-pointer rounded" onclick="changeLanguage('fr')">
+                        Français</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+<section class="bg-white py-16 px-4 md:px-8 border-t border-gray-100">
+    <div class="container mx-auto max-w-5xl">
+        <div class="text-center mb-12">
+            <h2 class="text-2xl md:text-3xl font-black text-[#4D8076] mb-4" data-lang="guide_title">دليل تعريف الأقسام
+                الأساسية للمقررات الإلكترونية</h2>
+            <div class="h-1 w-20 bg-[#D98E73] mx-auto rounded-full"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+            <div
+                class="group p-6 bg-[#fcfcfc] border-r-4 border-[#4D8076] rounded-xl shadow-sm hover:shadow-md transition-all">
+                <div class="flex items-center gap-4 mb-3">
+                    <span
+                        class="flex items-center justify-center w-10 h-10 bg-[#4D8076] text-white font-black rounded-lg">1</span>
+                    <h3 class="font-bold text-lg text-gray-800" data-lang="sec1_title">القسم الأول: الفهرس والأدوات</h3>
+                </div>
+                <p class="text-gray-600 text-sm leading-relaxed" data-lang="sec1_desc">يحتوي هذا القسم على الخارطة
+                    الكاملة للمقرر مع كافة الأدوات المساعدة التي يحتاجها الطالب أثناء التعلم.</p>
+            </div>
+
+            <div
+                class="group p-6 bg-[#fcfcfc] border-r-4 border-[#D98E73] rounded-xl shadow-sm hover:shadow-md transition-all">
+                <div class="flex items-center gap-4 mb-3">
+                    <span
+                        class="flex items-center justify-center w-10 h-10 bg-[#D98E73] text-white font-black rounded-lg">2</span>
+                    <h3 class="font-bold text-lg text-gray-800" data-lang="sec2_title">القسم الثاني: محاور المادة</h3>
+                </div>
+                <p class="text-gray-600 text-sm leading-relaxed" data-lang="sec2_desc">عرض شامل للعناوين الرئيسية
+                    والنقاط الجوهرية التي سيتم تغطيتها خلال المنهج الدراسي.</p>
+            </div>
+
+            <div
+                class="group p-6 bg-[#fcfcfc] border-r-4 border-[#4D8076] rounded-xl shadow-sm hover:shadow-md transition-all">
+                <div class="flex items-center gap-4 mb-3">
+                    <span
+                        class="flex items-center justify-center w-10 h-10 bg-[#4D8076] text-white font-black rounded-lg">3</span>
+                    <h3 class="font-bold text-lg text-gray-800" data-lang="sec3_title">القسم الثالث: المادة التدريبية
+                    </h3>
+                </div>
+                <p class="text-gray-600 text-sm leading-relaxed" data-lang="sec3_desc">صلب المقرر التعليمي، ويضم المحتوى
+                    المعرفي، الشروحات، والوسائط المتعددة التعليمية.</p>
+            </div>
+
+            <div
+                class="group p-6 bg-[#fcfcfc] border-r-4 border-[#D98E73] rounded-xl shadow-sm hover:shadow-md transition-all">
+                <div class="flex items-center gap-4 mb-3">
+                    <span
+                        class="flex items-center justify-center w-10 h-10 bg-[#D98E73] text-white font-black rounded-lg">4</span>
+                    <h3 class="font-bold text-lg text-gray-800" data-lang="sec4_title">القسم الرابع: الأمثلة والتدريبات
+                    </h3>
+                </div>
+                <p class="text-gray-600 text-sm leading-relaxed" data-lang="sec4_desc">التطبيق العملي لما تم شرحه من
+                    خلال أمثلة واقعية وتدريبات تفاعلية لترسيخ المعلومة.</p>
+            </div>
+
+            <div
+                class="group p-6 bg-[#fcfcfc] border-r-4 border-[#4D8076] rounded-xl shadow-sm hover:shadow-md transition-all">
+                <div class="flex items-center gap-4 mb-3">
+                    <span
+                        class="flex items-center justify-center w-10 h-10 bg-[#4D8076] text-white font-black rounded-lg">5</span>
+                    <h3 class="font-bold text-lg text-gray-800" data-lang="sec5_title">القسم الخامس: التقييم والدرجات
+                    </h3>
+                </div>
+                <p class="text-gray-600 text-sm leading-relaxed" data-lang="sec5_desc">توضيح نموذج تقييم المشاريع،
+                    المعايير المتبعة، وآلية تقسيم الدرجات بكل شفافية.</p>
+            </div>
+
+            <div
+                class="group p-6 bg-[#fcfcfc] border-r-4 border-[#D98E73] rounded-xl shadow-sm hover:shadow-md transition-all">
+                <div class="flex items-center gap-4 mb-3">
+                    <span
+                        class="flex items-center justify-center w-10 h-10 bg-[#D98E73] text-white font-black rounded-lg">6</span>
+                    <h3 class="font-bold text-lg text-gray-800" data-lang="sec6_title">القسم السادس: دليل التقنيات</h3>
+                </div>
+                <p class="text-gray-600 text-sm leading-relaxed" data-lang="sec6_desc">قائمة بالتقنيات والبرمجيات
+                    المتوفرة والمطلوبة لتحقيق أقصى استفادة من المقرر.</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+<footer class="bg-black text-white pt-16 pb-8 px-6 mt-20">
+    <div class="container mx-auto">
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12 text-right mb-12">
+
+            <div class="md:col-span-1">
+                <div class="flex items-center justify-end mb-6">
+                    <span class="text-3xl font-black text-[#5D9289]" data-lang="logo_name">حصتك<span
+                            class="text-[#D98E73]">.</span></span>
+                </div>
+                <p class="text-gray-400 text-sm leading-relaxed" data-lang="footer_desc">
+                    المنصة العربية الأولى التي توفر أفضل المعلمين والمعلمات لتقديم الدروس الخاصة للطلاب والطالبات في
+                    منطقة الخليج العربي بأسعار منافسة، ومرونة عالية تتيح إمكانية تغيير المعلمين واختيار الأوقات
+                    المناسبة للحصول على الدروس الخاصة بما يحقق التفوق العلمي للطلاب والطالبات في مسيرتهم التعليمية.
+                </p>
+
+                <div class="mt-8 flex flex-col gap-3 items-end">
+                    <h4 class="font-bold mb-2" data-lang="contact_us">تواصل معنا</h4>
+                    <div class="flex gap-4 mb-4">
+                        <a href="https://x.com/moalimy_portal" target="_blank"
+                            class="w-8 h-8 flex items-center justify-center bg-[#1DA1F2] rounded-full hover:scale-110 transition"><img
+                                src="https://img.icons8.com/ios-filled/24/ffffff/twitter.png" class="w-4 h-4" /></a>
+                        <a href="https://www.instagram.com/moalimy.portal/" target="_blank"
+                            class="w-8 h-8 flex items-center justify-center bg-gradient-to-tr from-yellow-400 via-red-500 to-purple-500 rounded-full hover:scale-110 transition"><img
+                                src="https://img.icons8.com/ios-filled/24/ffffff/instagram-new.png"
+                                class="w-4 h-4" /></a>
+                        <a href="https://www.tiktok.com/@moalimy" target="_blank"
+                            class="w-8 h-8 flex items-center justify-center bg-black border border-white rounded-full hover:scale-110 transition"><img
+                                src="https://img.icons8.com/ios-filled/24/ffffff/tiktok.png" class="w-4 h-4" /></a>
+                    </div>
+                    <div class="flex gap-3">
+                        <a href="https://apps.apple.com/us/app/%D9%85%D8%B9%D9%84%D9%85%D9%8A/id6654920904"
+                            target="_blank">
+                            <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
+                                class="h-10 cursor-pointer" alt="App Store">
+                        </a>
+                        <a href="https://play.google.com/store/apps/details?id=com.select.moalimy&pli=1"
+                            target="_blank">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
+                                class="h-10 cursor-pointer" alt="Google Play">
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <h3 class="text-xl font-black mb-8 border-b border-gray-800 pb-2 inline-block" data-lang="about_title">
+                    عن حصتك </h3>
+                <ul class="space-y-4 text-gray-400">
+                    <li><a href="index.html" class="hover:text-white transition" data-lang="home">الصفحة
+                            الرئيسية</a></li>
+                    <li><a href="login.html" class="hover:text-white transition" data-lang="reg_students">التسجيل
+                            للطلاب
+                            والطالبات</a></li>
+                    <li><a href="login2.html" class="hover:text-white transition" data-lang="reg_teachers">التسجيل
+                            للمعلمين
+                            والمعلمات</a></li>
+                    <li><a href="login_tsh.html" class="hover:text-white transition" data-lang="reg_marketer">التسجيل
+                            كمسوق</a>
+                    </li>
+                    <li><a href="subscriptions.html" class="hover:text-white transition"
+                            data-lang="subscriptions">الاشتراكات</a>
+                    </li>
+                    <li><a href="course_guide.html" class="hover:text-white transition" data-lang="course_guide">دليل
+                            تعريف
+                            المقررات</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="text-xl font-black mb-8 border-b border-gray-800 pb-2 inline-block" data-lang="more_title">
+                    المزيد</h3>
+                <ul class="space-y-4 text-gray-400">
+                    <li><a href="about_us.html" class="hover:text-white transition" data-lang="about_platform">حول
+                            المنصة</a>
+                    </li>
+                    <li><a href="contact_us.html" class="hover:text-white transition" data-lang="contact_us">تواصل
+                            معنا</a></li>
+                    <li><a href="faq.html" class="hover:text-white transition" data-lang="faq">الأسئلة الشائعة</a>
+                    </li>
+                    <li><a href="how_it_works.html" class="hover:text-white transition" data-lang="how_it_works">كيف
+                            تعمل المنصة</a>
+                    </li>
+                    <li><a href="terms.html" class="hover:text-white transition" data-lang="terms">شروط وأحكام</a>
+                    </li>
+                    <li><a href="privacy.html" class="hover:text-white transition" data-lang="privacy">سياسة
+                            الخصوصية</a></li>
+                </ul>
+            </div>
+
+            <div class="flex justify-center md:justify-end items-start">
+                <img src="/path-to-official-logo.png" class="h-20 opacity-80" alt="hstk Logo">
+            </div>
+
+        </div>
+
+        <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-6">
+
+            <div
+                class="flex flex-wrap gap-4 items-center justify-center grayscale opacity-80 hover:grayscale-0 transition-all">
+                <div class="bg-white px-3 py-1 rounded text-black text-[10px] font-bold">tabby</div>
+                <div class="bg-white px-3 py-1 rounded text-black text-[10px] font-bold">tamara</div>
+                <img src="https://img.icons8.com/color/48/000000/visa.png" class="h-6" />
+                <img src="https://img.icons8.com/color/48/000000/mastercard.png" class="h-6" />
+                <img src="https://img.icons8.com/color/48/000000/apple-pay.png" class="h-6" />
+                <div class="bg-[#007AB7] px-2 py-1 rounded text-white text-[10px]">مدى mada</div>
+            </div>
+
+            <p class="text-gray-500 text-sm" data-lang="copyright">
+                Copyright © 2026 <span class="text-white">moalimy.com</span> All Rights Reserved
+            </p>
+        </div>
+    </div>
+</footer>
+<script>
+    // 1. قاموس اللغات
+    const translations = {
+        ar: {
+            logo_name: 'حصتك',
+            accredited_by: 'المنصة معتمدة من:',
+            center_name: 'المركز الوطني للتعليم الإلكتروني',
+            nav_videos: '🎥 فيديوهات تعليمية',
+            nav_gifts: '🎁 بطاقات هدايا',
+            subscribe: 'اشترك معنا',
+            login: 'دخول',
+            lang_toggle: 'ع',
+            lang_label: 'اللغة',
+            guide_title: 'دليل تعريف الأقسام الأساسية للمقررات الإلكترونية',
+            sec1_title: 'القسم الأول: الفهرس والأدوات',
+            sec1_desc: 'يحتوي هذا القسم على الخارطة الكاملة للمقرر مع كافة الأدوات المساعدة التي يحتاجها الطالب أثناء التعلم.',
+            sec2_title: 'القسم الثاني: محاور المادة',
+            sec2_desc: 'عرض شامل للعناوين الرئيسية والنقاط الجوهرية التي سيتم تغطيتها خلال المنهج الدراسي.',
+            sec3_title: 'القسم الثالث: المادة التدريبية',
+            sec3_desc: 'صلب المقرر التعليمي، ويضم المحتوى المعرفي، الشروحات، والوسائط المتعددة التعليمية.',
+            sec4_title: 'القسم الرابع: الأمثلة والتدريبات',
+            sec4_desc: 'التطبيق العملي لما تم شرحه من خلال أمثلة واقعية وتدريبات تفاعلية لترسيخ المعلومة.',
+            sec5_title: 'القسم الخامس: التقييم والدرجات',
+            sec5_desc: 'توضيح نموذج تقييم المشاريع، المعايير المتبعة، وآلية تقسيم الدرجات بكل شفافية.',
+            sec6_title: 'القسم السادس: دليل التقنيات',
+            sec6_desc: 'قائمة بالتقنيات والبرمجيات المتوفرة والمطلوبة لتحقيق أقصى استفادة من المقرر.',
+            footer_desc: 'المنصة العربية الأولى التي توفر أفضل المعلمين والمعلمات لتقديم الدروس الخاصة للطلاب والطالبات في منطقة الخليج العربي.',
+            contact_us: 'تواصل معنا',
+            about_title: 'عن حصتك',
+            home: 'الصفحة الرئيسية',
+            reg_students: 'تسجيل الطلاب',
+            reg_teachers: 'تسجيل المعلمين',
+            reg_marketer: 'تسجيل مسوق',
+            subscriptions: 'الاشتراكات',
+            course_guide: 'دليل المقررات',
+            more_title: 'المزيد',
+            about_platform: 'حول المنصة',
+            faq: 'الأسئلة الشائعة',
+            how_it_works: 'كيف تعمل المنصة',
+            terms: 'شروط وأحكام',
+            privacy: 'سياسة الخصوصية',
+            copyright: 'جميع الحقوق محفوظة © 2026'
+        },
+        en: {
+            logo_name: 'Hessatk',
+            accredited_by: 'Accredited by:',
+            center_name: 'National eLearning Center',
+            nav_videos: '🎥 Educational Videos',
+            nav_gifts: '🎁 Gift Cards',
+            subscribe: 'Subscribe',
+            login: 'Login',
+            lang_toggle: 'EN',
+            lang_label: 'Language',
+            guide_title: 'Guide to Core Sections of Electronic Courses',
+            sec1_title: 'Section 1: Index & Tools',
+            sec1_desc: 'Contains the full course map with all assistant tools needed during learning.',
+            sec2_title: 'Section 2: Course Pillars',
+            sec2_desc: 'A comprehensive view of the main titles and core points covered in the curriculum.',
+            sec3_title: 'Section 3: Training Material',
+            sec3_desc: 'The core of the course, including knowledge content and multimedia.',
+            sec4_title: 'Section 4: Examples & Exercises',
+            sec4_desc: 'Practical application through real-world examples and interactive exercises.',
+            sec5_title: 'Section 5: Assessment & Grades',
+            sec5_desc: 'Clarification of project evaluation models and grading transparency.',
+            sec6_title: 'Section 6: Tech Guide',
+            sec6_desc: 'List of required software and technologies for maximum course benefit.',
+            footer_desc: 'The first Arabic platform providing the best tutors for private lessons in the Gulf region.',
+            contact_us: 'Contact Us',
+            about_title: 'About Hessatk',
+            home: 'Home',
+            reg_students: 'Student Registration',
+            reg_teachers: 'Teacher Registration',
+            reg_marketer: 'Marketer Registration',
+            subscriptions: 'Subscriptions',
+            course_guide: 'Course Guide',
+            more_title: 'More',
+            about_platform: 'About Platform',
+            faq: 'FAQ',
+            how_it_works: 'How it works',
+            terms: 'Terms & Conditions',
+            privacy: 'Privacy Policy',
+            copyright: 'All Rights Reserved © 2026'
+        },
+        fr: {
+            logo_name: 'Hessatk',
+            accredited_by: 'Accrédité par :',
+            center_name: 'Centre National de l\'E-learning',
+            nav_videos: '🎥 Vidéos Éducatives',
+            nav_gifts: '🎁 Cartes Cadeaux',
+            subscribe: 'S\'abonner',
+            login: 'Connexion',
+            lang_toggle: 'FR',
+            lang_label: 'Langue',
+            guide_title: 'Guide des Sections Fondamentales des Cours Électroniques',
+            sec1_title: 'Section 1: Index et Outils',
+            sec1_desc: 'Contient la carte complète du cours avec tous les outils d\'assistance nécessaires.',
+            sec2_title: 'Section 2: Piliers du Cours',
+            sec2_desc: 'Vue d\'ensemble des titres principaux et des points clés du programme.',
+            sec3_title: 'Section 3: Matériel de Formation',
+            sec3_desc: 'Le cœur du cours, comprenant le contenu cognitif et le multimédia.',
+            sec4_title: 'Section 4: Exemples et Exercices',
+            sec4_desc: 'Application pratique à travers des exemples réels et des exercices interactifs.',
+            sec5_title: 'Section 5: Évaluation et Notes',
+            sec5_desc: 'Clarification du modèle d\'évaluation et de la transparence des notes.',
+            sec6_title: 'Section 6: Guide Technique',
+            sec6_desc: 'Liste des logiciels et technologies requis pour un bénéfice maximal.',
+            footer_desc: 'La première plateforme arabe offrant les meilleurs tuteurs pour des cours privés dans le Golfe.',
+            contact_us: 'Contactez-nous',
+            about_title: 'À propos',
+            home: 'Accueil',
+            reg_students: 'Inscription Étudiant',
+            reg_teachers: 'Inscription Enseignant',
+            reg_marketer: 'Inscription Marketeur',
+            subscriptions: 'Abonnements',
+            course_guide: 'Guide des Cours',
+            more_title: 'Plus',
+            about_platform: 'À propos de la plateforme',
+            faq: 'FAQ',
+            how_it_works: 'Comment ça marche',
+            terms: 'Conditions générales',
+            privacy: 'Confidentialité',
+            copyright: 'Tous droits réservés © 2026'
+        }
+    };
+
+    // 2. دالة تغيير اللغة
+    function changeLanguage(lang) {
+        // تحديث اتجاه الصفحة
+        const htmlDoc = document.documentElement;
+        htmlDoc.lang = lang;
+        htmlDoc.dir = (lang === 'ar') ? 'rtl' : 'ltr';
+
+        // تحديث النصوص بناءً على data-lang
+        document.querySelectorAll('[data-lang]').forEach(element => {
+            const key = element.getAttribute('data-lang');
+            if (translations[lang][key]) {
+                // الحفاظ على الأيقونات إذا كانت موجودة (مثل 🎥)
+                const icon = element.querySelector('span') ? element.querySelector('span').outerHTML : '';
+                if (icon && key.includes('nav_')) {
+                    element.innerHTML = icon + " " + translations[lang][key].replace(/[\u1F30-\u1F6F].*/, '').trim();
+                } else {
+                    element.innerText = translations[lang][key];
+                }
+            }
+        });
+
+        // إغلاق القوائم بعد الاختيار
+        document.getElementById('langMenu').classList.add('hidden');
+        closeMenu();
+
+        // حفظ اللغة في المتصفح
+        localStorage.setItem('preferredLang', lang);
+    }
+
+    // 3. التحكم في القوائم (Mobile & Lang)
+    function toggleMenu() {
+        document.getElementById('langMenu').classList.toggle('hidden');
+    }
+
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const closeMenuBtn = document.getElementById('closeMenuBtn');
+    const sideMenu = document.getElementById('sideMenu');
+    const sideMenuContent = document.getElementById('sideMenuContent');
+
+    mobileMenuBtn.onclick = () => {
+        sideMenu.classList.remove('hidden');
+        setTimeout(() => sideMenuContent.classList.remove('translate-x-full'), 10);
+    };
+
+    function closeMenu() {
+        sideMenuContent.classList.add('translate-x-full');
+        setTimeout(() => sideMenu.classList.add('hidden'), 300);
+    }
+
+    closeMenuBtn.onclick = closeMenu;
+    sideMenu.onclick = (e) => { if (e.target === sideMenu) closeMenu(); };
+
+    // 4. تشغيل اللغة المحفوظة عند تحميل الصفحة
+    window.onload = () => {
+        const savedLang = localStorage.getItem('preferredLang') || 'ar';
+        changeLanguage(savedLang);
+    };
+</script>
+
+<style>
+    /* تحسينات إضافية للاستجابة */
+    [dir="rtl"] .text-right {
+        text-align: right;
+    }
+
+    [dir="ltr"] .text-right {
+        text-align: left;
+    }
+
+    [dir="rtl"] .border-r-4 {
+        border-right-width: 4px;
+        border-left-width: 0;
+    }
+
+    [dir="ltr"] .border-r-4 {
+        border-left-width: 4px;
+        border-right-width: 0;
+    }
+
+    /* جعل الخط مناسباً لكل لغة */
+    :lang(ar) {
+        font-family: 'Cairo', sans-serif;
+    }
+
+    :lang(en),
+    :lang(fr) {
+        font-family: sans-serif;
+    }
+
+    /* ضبط اتجاه السايد منيو في اللغات الأجنبية */
+    [dir="ltr"] #sideMenuContent {
+        right: auto;
+        left: 0;
+        transform: translateX(-100%);
+    }
+
+    [dir="ltr"] #sideMenuContent.translate-x-0 {
+        transform: translateX(0);
+    }
+</style>

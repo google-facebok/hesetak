@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منصة حصتك - سياسة الخصوصية</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        .legal-text p {
+            margin-bottom: 1.5rem;
+            color: #4b5563;
+            line-height: 1.8;
+        }
+
+        .legal-text h2 {
+            color: #4D8076;
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            border-inline-start: 4px solid #D98E73;
+            padding-inline-start: 1rem;
+        }
+
+        .legal-text h3 {
+            color: #374151;
+            font-weight: 600;
+            font-size: 1.25rem;
+            margin-top: 2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .legal-text ul {
+            list-style-type: none;
+            padding-inline-start: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .legal-text li {
+            position: relative;
+            margin-bottom: 0.75rem;
+            color: #4b5563;
+        }
+
+        .legal-text li::before {
+            content: "•";
+            color: #D98E73;
+            font-weight: bold;
+            position: absolute;
+            inset-inline-start: -1.2rem;
+        }
+    </style>
+</head>
+
+<body class="bg-[#f4f7f6]">
+
+    <nav class="flex items-center justify-between px-4 md:px-8 py-4 shadow-sm bg-white sticky top-0 z-50">
+        <div class="flex items-center gap-2 md:gap-4">
+            <button id="mobileMenuBtn" class="lg:hidden text-gray-600 focus:outline-none">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+            <div class="font-bold text-xl md:text-2xl text-[#4D8076]">
+                <span data-lang="logo_name">حصتك</span><span class="text-[#D98E73]">.</span>
+            </div>
+            <div class="h-10 w-[1px] bg-gray-200 mx-1 md:mx-2 hidden sm:block"></div>
+            <div class="text-[8px] md:text-[10px] leading-tight text-gray-500 hidden sm:block">
+                <span data-lang="accredited_by">المنصة معتمدة من:</span><br>
+                <span class="font-bold text-gray-700 text-[10px] md:text-[12px]" data-lang="center_name">المركز الوطني
+                    للتعليم الإلكتروني</span>
+            </div>
+        </div>
+
+        <div class="hidden lg:flex items-center gap-3">
+            <button onclick="window.location.href='video.html'"
+                class="bg-[#D98E73] text-white px-5 py-2 rounded-full flex items-center gap-2 hover:bg-[#c57d63] transition shrink-0">
+                <span data-lang="nav_videos">🎥 فيديوهات تعليمية</span>
+            </button>
+            <button onclick="window.location.href='boox.html'"
+                class="border border-gray-300 text-gray-600 px-5 py-2 rounded-full flex items-center gap-2 hover:bg-gray-50 shrink-0">
+                <span data-lang="nav_gifts">🎁 بطاقات هدايا</span>
+            </button>
+
+            <div class="relative inline-block">
+                <button onclick="toggleMenu()"
+                    class="font-bold text-gray-400 px-2 cursor-pointer hover:text-gray-600 focus:outline-none">
+                    🌐 <span id="currentLangDisplay">ع</span>
+                </button>
+                <div id="langMenu"
+                    class="hidden absolute left-0 md:right-0 mt-2 w-32 bg-white border rounded shadow-lg overflow-hidden">
+                    <p onclick="changeLanguage('ar')"
+                        class="px-3 py-2 hover:bg-gray-100 cursor-pointer text-sm text-right">العربية</p>
+                    <p onclick="changeLanguage('en')"
+                        class="px-3 py-2 hover:bg-gray-100 cursor-pointer text-sm text-left">English</p>
+                    <p onclick="changeLanguage('fr')"
+                        class="px-3 py-2 hover:bg-gray-100 cursor-pointer text-sm text-left">Français</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex items-center gap-2 md:gap-4">
+            <button data-lang="nav_subscribe"
+                class="bg-[#4D8076] text-white px-4 md:px-8 py-2 rounded-full font-bold hover:bg-[#3d665e] transition text-sm md:text-base">اشترك
+                معنا</button>
+            <button data-lang="nav_login"
+                class="bg-gray-100 text-gray-700 px-4 md:px-6 py-2 rounded-full font-medium hover:bg-gray-200 text-sm md:text-base hidden sm:block">دخول</button>
+            <div class="relative cursor-pointer">
+                <span onclick="window.location.href='cart.html'"
+                    class="absolute -top-2 -right-2 bg-black text-white text-[10px] w-5 h-5 flex items-center justify-center rounded-full">0</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-600" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+            </div>
+        </div>
+    </nav>
+
+    <header class="bg-white border-b border-gray-100 py-12 px-4">
+        <div class="max-w-4xl mx-auto text-center">
+            <h1 class="text-3xl md:text-4xl font-bold text-[#4D8076] mb-4" data-lang="privacy_h1">سياسة الخصوصية</h1>
+            <p class="text-gray-500 max-w-2xl mx-auto italic" data-lang="privacy_subtitle">
+                نحن ملتزمون بالحفاظ على ثقتك، ويبدأ هذا الالتزام بمساعدتك على فهم ممارسات الخصوصية المعمول بها في منصة
+                معلمي.
+            </p>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-4 py-12">
+        <div class="bg-white shadow-sm rounded-3xl p-6 md:p-12 legal-text text-start">
+            <section id="intro">
+                <h2 data-lang="sec1_title">أولاً. مقدمة</h2>
+                <p data-lang="sec1_p1">
+                    باستخدامك لتطبيق منصة معلمي، فإنك تأتمن منصة معلمي على معلوماتك الشخصية. ونحن بدَورنا ملتزمون
+                    بالحفاظ على ثقتك.
+                </p>
+                <h3 data-lang="sec1_sub_title">أ. النطاق</h3>
+                <p data-lang="sec1_sub_p">يسري هذا الإشعار على مستخدمي خدمات منصة معلمي في أي مكان في العالم، ويشمل
+                    تحديداً:</p>
+                <ul>
+                    <li data-lang="li1">الطلاب والطالبات والمستفيدون: الأشخاص الذين يطلبون دروس خصوصية عن بعد.</li>
+                    <li data-lang="li2">الشركاء المعلمين والمعلمات: الأشخاص الذين يقدمون خدمات التدريس بشكل مستقل.</li>
+                </ul>
+            </section>
+        </div>
+
+        <div class="mt-12 text-center text-gray-500 text-sm">
+            <p data-lang="copyright_footer">© 2026 منصة حصتك (معلمي). جميع الحقوق محفوظة.</p>
+        </div>
+    </main>
+
+    <footer class="bg-black text-white pt-16 pb-8 px-6 mt-20">
+        <div class="container mx-auto">
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12 text-right mb-12">
+
+                <div class="md:col-span-1">
+                    <div class="flex items-center justify-end mb-6">
+                        <span class="text-3xl font-black text-[#5D9289]" data-lang="logo_name">حصتك<span
+                                class="text-[#D98E73]">.</span></span>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed" data-lang="footer_desc">
+                        المنصة العربية الأولى التي توفر أفضل المعلمين والمعلمات لتقديم الدروس الخاصة للطلاب والطالبات في
+                        منطقة الخليج العربي بأسعار منافسة، ومرونة عالية تتيح إمكانية تغيير المعلمين واختيار الأوقات
+                        المناسبة للحصول على الدروس الخاصة بما يحقق التفوق العلمي للطلاب والطالبات في مسيرتهم التعليمية.
+                    </p>
+
+                    <div class="mt-8 flex flex-col gap-3 items-end">
+                        <h4 class="font-bold mb-2" data-lang="contact_us">تواصل معنا</h4>
+                        <div class="flex gap-4 mb-4">
+                            <a href="https://x.com/moalimy_portal" target="_blank"
+                                class="w-8 h-8 flex items-center justify-center bg-[#1DA1F2] rounded-full hover:scale-110 transition"><img
+                                    src="https://img.icons8.com/ios-filled/24/ffffff/twitter.png" class="w-4 h-4" /></a>
+                            <a href="https://www.instagram.com/moalimy.portal/" target="_blank"
+                                class="w-8 h-8 flex items-center justify-center bg-gradient-to-tr from-yellow-400 via-red-500 to-purple-500 rounded-full hover:scale-110 transition"><img
+                                    src="https://img.icons8.com/ios-filled/24/ffffff/instagram-new.png"
+                                    class="w-4 h-4" /></a>
+                            <a href="https://www.tiktok.com/@moalimy" target="_blank"
+                                class="w-8 h-8 flex items-center justify-center bg-black border border-white rounded-full hover:scale-110 transition"><img
+                                    src="https://img.icons8.com/ios-filled/24/ffffff/tiktok.png" class="w-4 h-4" /></a>
+                        </div>
+                        <div class="flex gap-3">
+                            <a href="https://apps.apple.com/us/app/%D9%85%D8%B9%D9%84%D9%85%D9%8A/id6654920904"
+                                target="_blank">
+                                <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
+                                    class="h-10 cursor-pointer" alt="App Store">
+                            </a>
+                            <a href="https://play.google.com/store/apps/details?id=com.select.moalimy&pli=1"
+                                target="_blank">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
+                                    class="h-10 cursor-pointer" alt="Google Play">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-black mb-8 border-b border-gray-800 pb-2 inline-block"
+                        data-lang="about_title">عن حصتك </h3>
+                    <ul class="space-y-4 text-gray-400">
+                        <li><a href="index.html" class="hover:text-white transition" data-lang="home">الصفحة
+                                الرئيسية</a></li>
+                        <li><a href="login.html" class="hover:text-white transition" data-lang="reg_students">التسجيل
+                                للطلاب
+                                والطالبات</a></li>
+                        <li><a href="login2.html" class="hover:text-white transition" data-lang="reg_teachers">التسجيل
+                                للمعلمين
+                                والمعلمات</a></li>
+                        <li><a href="login_tsh.html" class="hover:text-white transition"
+                                data-lang="reg_marketer">التسجيل كمسوق</a>
+                        </li>
+                        <li><a href="subscriptions.html" class="hover:text-white transition"
+                                data-lang="subscriptions">الاشتراكات</a>
+                        </li>
+                        <li><a href="course_guide.html" class="hover:text-white transition"
+                                data-lang="course_guide">دليل تعريف
+                                المقررات</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-black mb-8 border-b border-gray-800 pb-2 inline-block"
+                        data-lang="more_title">المزيد</h3>
+                    <ul class="space-y-4 text-gray-400">
+                        <li><a href="about_us.html" class="hover:text-white transition" data-lang="about_platform">حول
+                                المنصة</a>
+                        </li>
+                        <li><a href="contact_us.html" class="hover:text-white transition" data-lang="contact_us">تواصل
+                                معنا</a></li>
+                        <li><a href="faq.html" class="hover:text-white transition" data-lang="faq">الأسئلة الشائعة</a>
+                        </li>
+                        <li><a href="how_it_works.html" class="hover:text-white transition" data-lang="how_it_works">كيف
+                                تعمل المنصة</a>
+                        </li>
+                        <li><a href="terms.html" class="hover:text-white transition" data-lang="terms">شروط وأحكام</a>
+                        </li>
+                        <li><a href="privacy.html" class="hover:text-white transition" data-lang="privacy">سياسة
+                                الخصوصية</a></li>
+                    </ul>
+                </div>
+
+                <div class="flex justify-center md:justify-end items-start">
+                    <img src="/path-to-official-logo.png" class="h-20 opacity-80" alt="hstk Logo">
+                </div>
+
+            </div>
+
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-6">
+
+                <div
+                    class="flex flex-wrap gap-4 items-center justify-center grayscale opacity-80 hover:grayscale-0 transition-all">
+                    <div class="bg-white px-3 py-1 rounded text-black text-[10px] font-bold">tabby</div>
+                    <div class="bg-white px-3 py-1 rounded text-black text-[10px] font-bold">tamara</div>
+                    <img src="https://img.icons8.com/color/48/000000/visa.png" class="h-6" />
+                    <img src="https://img.icons8.com/color/48/000000/mastercard.png" class="h-6" />
+                    <img src="https://img.icons8.com/color/48/000000/apple-pay.png" class="h-6" />
+                    <div class="bg-[#007AB7] px-2 py-1 rounded text-white text-[10px]">مدى mada</div>
+                </div>
+
+                <p class="text-gray-500 text-sm" data-lang="copyright">
+                    Copyright © 2026 <span class="text-white">moalimy.com</span> All Rights Reserved
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const translations = {
+            ar: {
+                logo_name: "حصتك",
+                accredited_by: "المنصة معتمدة من:",
+                center_name: "المركز الوطني للتعليم الإلكتروني",
+                nav_videos: "🎥 فيديوهات تعليمية",
+                nav_gifts: "🎁 بطاقات هدايا",
+                nav_subscribe: "اشترك معنا",
+                nav_login: "دخول",
+                privacy_h1: "سياسة الخصوصية",
+                privacy_subtitle: "نحن ملتزمون بالحفاظ على ثقتك، ويبدأ هذا الالتزام بمساعدتك على فهم ممارسات الخصوصية.",
+                sec1_title: "أولاً. مقدمة",
+                sec1_p1: "باستخدامك لتطبيق منصة معلمي، فإنك تأتمن منصة معلمي على معلوماتك الشخصية.",
+                sec1_sub_title: "أ. النطاق",
+                sec1_sub_p: "يسري هذا الإشعار على مستخدمي خدمات منصة معلمي في أي مكان في العالم:",
+                li1: "الطلاب والطالبات والمستفيدون: الأشخاص الذين يطلبون دروس خصوصية.",
+                li2: "الشركاء المعلمين والمعلمات: الأشخاص الذين يقدمون خدمات التدريس.",
+                footer_desc: "المنصة العربية الأولى التي توفر أفضل المعلمين والمعلمات لتقديم الدروس الخاصة في منطقة الخليج العربي.",
+                more_title: "المزيد",
+                privacy: "سياسة الخصوصية",
+                terms: "الشروط والأحكام",
+                copyright: "Copyright © 2026 moalimy.com All Rights Reserved",
+                copyright_footer: "© 2026 منصة حصتك (معلمي). جميع الحقوق محفوظة."
+            },
+            en: {
+                logo_name: "Hestak",
+                accredited_by: "Accredited by:",
+                center_name: "National Center for E-Learning",
+                nav_videos: "🎥 Tutorials",
+                nav_gifts: "🎁 Gift Cards",
+                nav_subscribe: "Subscribe",
+                nav_login: "Login",
+                privacy_h1: "Privacy Policy",
+                privacy_subtitle: "We are committed to maintaining your trust, starting with helping you understand our practices.",
+                sec1_title: "First. Introduction",
+                sec1_p1: "By using the Moalimy app, you entrust us with your personal information.",
+                sec1_sub_title: "A. Scope",
+                sec1_sub_p: "This notice applies to users of Moalimy services worldwide:",
+                li1: "Students & Beneficiaries: People requesting private tutoring.",
+                li2: "Teacher Partners: People providing independent teaching services.",
+                footer_desc: "The premier Arabic platform providing top teachers for private lessons in the Gulf region.",
+                more_title: "More",
+                privacy: "Privacy Policy",
+                terms: "Terms & Conditions",
+                copyright: "Copyright © 2026 moalimy.com All Rights Reserved",
+                copyright_footer: "© 2026 Hestak Platform. All Rights Reserved."
+            },
+            fr: {
+                logo_name: "Hestak",
+                accredited_by: "Accrédité par:",
+                center_name: "Centre National d'E-Learning",
+                nav_videos: "🎥 Tutoriels",
+                nav_gifts: "🎁 Cartes Cadeaux",
+                nav_subscribe: "S'abonner",
+                nav_login: "Connexion",
+                privacy_h1: "Politique de Confidentialité",
+                privacy_subtitle: "Nous nous engageons à maintenir votre confiance.",
+                sec1_title: "Premier. Introduction",
+                sec1_p1: "En utilisant l'application Moalimy, vous nous confiez vos informations personnelles.",
+                sec1_sub_title: "A. Portée",
+                sec1_sub_p: "Cet avis s'applique aux utilisateurs des services Moalimy dans le monde entier:",
+                li1: "Étudiants & Bénéficiaires: Personnes demandant des cours privés.",
+                li2: "Enseignants Partenaires: Personnes fournissant des services d'enseignement.",
+                footer_desc: "La première plateforme arabe offrant les meilleurs enseignants pour des cours privés.",
+                more_title: "Plus",
+                privacy: "Confidentialité",
+                terms: "Conditions",
+                copyright: "Copyright © 2026 moalimy.com All Rights Reserved",
+                copyright_footer: "© 2026 Plateforme Hestak. Tous droits réservés."
+            }
+        };
+
+        function toggleMenu() {
+            document.getElementById('langMenu').classList.toggle('hidden');
+        }
+
+        function changeLanguage(lang) {
+            const html = document.documentElement;
+            html.lang = lang;
+            html.dir = (lang === 'ar') ? 'rtl' : 'ltr';
+
+            // Update Current Lang Icon
+            const langIcons = { ar: 'ع', en: 'EN', fr: 'FR' };
+            document.getElementById('currentLangDisplay').innerText = langIcons[lang];
+
+            // Translate all elements with data-lang
+            document.querySelectorAll('[data-lang]').forEach(el => {
+                const key = el.getAttribute('data-lang');
+                if (translations[lang][key]) {
+                    el.innerText = translations[lang][key];
+                }
+            });
+
+            localStorage.setItem('selectedLang', lang);
+            document.getElementById('langMenu').classList.add('hidden');
+        }
+
+        // Initialize language
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('selectedLang') || 'ar';
+            changeLanguage(savedLang);
+        });
+
+        // Mobile Menu Logic
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const sideMenu = document.getElementById('sideMenu');
+        // (يمكنك إضافة كود فتح الـ Side Menu هنا إذا لزم الأمر)
+    </script>
+</body>
+
+</html>

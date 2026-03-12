@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-lang="page_title">تواصل معنا | منصة حصتك</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <style type="text/tailwindcss">
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: #f8fafb;
+            transition: all 0.3s ease;
+        }
+
+        .bg-primary { background-color: #3a8a81; }
+        .text-primary { color: #3a8a81; }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        .card-shadow {
+            box-shadow: 0 20px 40px -15px rgba(58, 138, 129, 0.1);
+        }
+
+        .input-style {
+            @apply w-full bg-gray-50 border-2 border-transparent rounded-2xl py-4 px-6 focus:bg-white focus:ring-0 transition-all outline-none text-gray-700;
+        }
+
+        .input-style:focus { border-color: #3a8a81; }
+
+        @media (max-width: 640px) {
+            .hero-title { font-size: 2.5rem; line-height: 1.2; }
+        }
+
+        /* لغات LTR */
+        html[dir="ltr"] .text-right { text-align: left; }
+        html[dir="ltr"] .justify-end { justify-content: flex-start; }
+        html[dir="ltr"] .items-end { items-start: flex-start; }
+    </style>
+</head>
+
+<body class="antialiased">
+
+    <nav class="glass-nav fixed top-0 w-full z-[100] border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center gap-3">
+                    <div
+                        class="w-11 h-11 bg-primary rounded-2xl flex items-center justify-center shadow-lg shadow-[#3a8a81]/30">
+                        <span class="text-white font-extrabold text-xl">ح</span>
+                    </div>
+                    <span class="text-2xl font-black text-gray-900 tracking-tight" data-lang="brand_name">حصتك</span>
+                </div>
+
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="index.html" class="text-gray-600 hover:text-primary font-bold transition"
+                        data-lang="nav_home">الرئيسية</a>
+                    <a href="about_us.html" class="text-gray-600 hover:text-primary font-bold transition"
+                        data-lang="nav_about">عن المنصة</a>
+                    <a href="contact_us.html" class="text-primary font-bold" data-lang="nav_contact">تواصل معنا</a>
+
+                    <select onchange="changeLanguage(this.value)"
+                        class="bg-transparent border-none font-bold text-gray-600 focus:ring-0 cursor-pointer">
+                        <option value="ar">العربية</option>
+                        <option value="en">English</option>
+                        <option value="fr">Français</option>
+                    </select>
+                </div>
+
+                <div class="flex items-center gap-3">
+                    <a href="#" class="hidden sm:block text-gray-600 font-bold px-4 py-2" data-lang="login">دخول</a>
+                    <a href="#"
+                        class="bg-primary text-white px-6 sm:px-8 py-3 rounded-2xl font-bold text-sm sm:text-base shadow-lg hover:bg-[#2d6b64] transition-all transform hover:scale-105 active:scale-95"
+                        data-lang="subscribe">
+                        اشترك الآن
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-32 pb-20 px-4">
+        <div class="max-w-7xl mx-auto">
+
+            <div class="text-center mb-16 px-4">
+                <div
+                    class="inline-flex items-center gap-2 bg-[#3a8a81]/10 text-primary px-4 py-2 rounded-full text-sm font-bold mb-6">
+                    <span class="relative flex h-2 w-2">
+                        <span
+                            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+                    </span>
+                    <span data-lang="status_online">فريقنا متاح الآن للرد</span>
+                </div>
+                <h1 class="hero-title text-4xl sm:text-5xl lg:text-6xl font-black text-gray-900 mb-6">
+                    <span data-lang="hero_title_1">تواصل مع</span> <span class="text-primary"
+                        data-lang="brand_name">حصتك</span>
+                </h1>
+                <p class="text-gray-500 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed" data-lang="hero_desc">
+                    نحن هنا لضمان أفضل تجربة تعليمية لك. أرسل استفسارك وسيقوم فريق الدعم الفني بالرد عليك في أقل من 24
+                    ساعة.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+                <div class="lg:col-span-4 order-2 lg:order-1 space-y-4">
+                    <div
+                        class="bg-white p-6 rounded-3xl border border-gray-100 card-shadow flex items-center gap-5 hover:border-primary/30 transition-all cursor-pointer group">
+                        <div
+                            class="w-14 h-14 bg-green-50 rounded-2xl flex items-center justify-center text-green-600 group-hover:bg-green-600 group-hover:text-white transition-all">
+                            <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.414 0 0 5.414 0 12.05c0 2.123.552 4.197 1.602 6.02L0 24l6.149-1.613a11.771 11.771 0 005.911 1.593h.005c6.637 0 12.05-5.414 12.05-12.05 0-3.21-1.248-6.227-3.514-8.494">
+                                </path>
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="text-xs font-bold text-gray-400 uppercase" data-lang="chat_live">محادثة مباشرة</p>
+                            <p class="font-black text-gray-700" data-lang="whatsapp_support">واتساب الدعم</p>
+                        </div>
+                    </div>
+
+                    <div
+                        class="bg-white p-6 rounded-3xl border border-gray-100 card-shadow flex items-center gap-5 hover:border-primary/30 transition-all cursor-pointer group">
+                        <div
+                            class="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all">
+                            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4">
+                                </path>
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="text-xs font-bold text-gray-400 uppercase" data-lang="email_us">ارسل لنا ايميل</p>
+                            <p class="font-black text-gray-700">support@hessatak.com</p>
+                        </div>
+                    </div>
+
+                    <div
+                        class="bg-primary text-white p-8 rounded-[2rem] shadow-2xl shadow-[#3a8a81]/40 relative overflow-hidden">
+                        <div class="relative z-10">
+                            <h3 class="text-xl font-bold mb-4" data-lang="hq_title">المقر الرئيسي</h3>
+                            <p class="text-white/80 leading-relaxed mb-6" data-lang="hq_address">المملكة العربية
+                                السعودية، الرياض<br>حي الصحافة، طريق الملك فهد</p>
+                            <div class="w-full h-32 bg-white/10 rounded-2xl border border-white/20 flex items-center justify-center italic text-sm"
+                                data-lang="map_soon">خارطة المقر قريباً..</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-8 order-1 lg:order-2">
+                    <div class="bg-white p-6 sm:p-10 rounded-[2.5rem] card-shadow border border-gray-50">
+                        <form action="#" class="space-y-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="space-y-2">
+                                    <label class="text-sm font-bold text-gray-700 mx-2"
+                                        data-lang="label_name">الاسم</label>
+                                    <input type="text" data-placeholder="placeholder_name" class="input-style">
+                                </div>
+                                <div class="space-y-2">
+                                    <label class="text-sm font-bold text-gray-700 mx-2" data-lang="label_phone">رقم
+                                        الجوال</label>
+                                    <input type="tel" placeholder="05xxxxxxxx" class="input-style ltr-dir text-left">
+                                </div>
+                            </div>
+
+                            <div class="space-y-2">
+                                <label class="text-sm font-bold text-gray-700 mx-2" data-lang="label_type">نوع
+                                    الاستفسار</label>
+                                <div class="relative">
+                                    <select id="query_type"
+                                        class="w-full bg-gray-50 border-2 border-transparent rounded-2xl py-4 px-6 focus:bg-white focus:border-[#3a8a81] focus:ring-0 transition-all outline-none appearance-none cursor-pointer font-medium text-gray-600">
+                                    </select>
+                                    <div
+                                        class="absolute left-6 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M19 9l-7 7-7-7"></path>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="space-y-2">
+                                <label class="text-sm font-bold text-gray-700 mx-2" data-lang="label_message">تفاصيل
+                                    الرسالة</label>
+                                <textarea rows="5" data-placeholder="placeholder_msg" class="input-style"></textarea>
+                            </div>
+
+                            <div class="flex flex-col sm:flex-row items-center justify-between gap-6 pt-4">
+                                <div
+                                    class="flex items-center gap-3 bg-gray-50 px-5 py-3 rounded-2xl border border-gray-100">
+                                    <input type="checkbox" class="w-5 h-5 accent-[#3a8a81] rounded-lg">
+                                    <span class="text-sm font-bold text-gray-500" data-lang="not_robot">أنا لست
+                                        روبوت</span>
+                                </div>
+
+                                <button type="submit"
+                                    class="bg-[#3a8a81] text-white px-10 py-4 rounded-md font-bold text-lg hover:bg-[#2d6b64] shadow-lg transition-all w-full sm:w-auto hover:-translate-y-1 active:translate-y-0"
+                                    data-lang="btn_send">
+                                    إرسال الرسالة الآن
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-black text-white pt-16 pb-8 px-6 mt-20">
+        <div class="container mx-auto text-center border-t border-gray-800 pt-8">
+            <p class="text-gray-500 text-sm" data-lang="copyright">Copyright © 2026 moalimy.com All Rights Reserved</p>
+        </div>
+    </footer>
+
+    <script>
+        const translations = {
+            ar: {
+                page_title: "تواصل معنا | منصة حصتك",
+                brand_name: "حصتك",
+                nav_home: "الرئيسية",
+                nav_about: "عن المنصة",
+                nav_contact: "تواصل معنا",
+                login: "دخول",
+                subscribe: "اشترك الآن",
+                status_online: "فريقنا متاح الآن للرد",
+                hero_title_1: "تواصل مع",
+                hero_desc: "نحن هنا لضمان أفضل تجربة تعليمية لك. أرسل استفسارك وسيقوم فريق الدعم الفني بالرد عليك في أقل من 24 ساعة.",
+                chat_live: "محادثة مباشرة",
+                whatsapp_support: "واتساب الدعم",
+                email_us: "ارسل لنا ايميل",
+                hq_title: "المقر الرئيسي",
+                hq_address: "المملكة العربية السعودية، الرياض، حي الصحافة، طريق الملك فهد",
+                map_soon: "خارطة المقر قريباً..",
+                label_name: "الاسم",
+                placeholder_name: "أدخل اسمك الكامل",
+                label_phone: "رقم الجوال",
+                label_type: "نوع الاستفسار",
+                query_options: ["تسجيل حساب جديد", "مشكلة في دفع الرسوم", "اقتراح معلمين جدد", "بلاغ عن محتوى"],
+                label_message: "تفاصيل الرسالة",
+                placeholder_msg: "كيف يمكننا مساعدتك اليوم؟",
+                not_robot: "أنا لست روبوت",
+                btn_send: "إرسال الرسالة الآن",
+                copyright: "جميع الحقوق محفوظة © 2026 حصتك"
+            },
+            en: {
+                page_title: "Contact Us | Hessatak Platform",
+                brand_name: "Hessatak",
+                nav_home: "Home",
+                nav_about: "About Us",
+                nav_contact: "Contact",
+                login: "Login",
+                subscribe: "Subscribe Now",
+                status_online: "Our team is available to respond",
+                hero_title_1: "Contact",
+                hero_desc: "We are here to ensure the best educational experience for you. Send your inquiry and our technical support team will reply within 24 hours.",
+                chat_live: "Live Chat",
+                whatsapp_support: "WhatsApp Support",
+                email_us: "Email Us",
+                hq_title: "Headquarters",
+                hq_address: "King Fahd Road, Al Sahafa, Riyadh, Saudi Arabia",
+                map_soon: "Map coming soon..",
+                label_name: "Name",
+                placeholder_name: "Enter your full name",
+                label_phone: "Phone Number",
+                label_type: "Inquiry Type",
+                query_options: ["New Account Registration", "Payment Issue", "Suggest New Teachers", "Report Content"],
+                label_message: "Message Details",
+                placeholder_msg: "How can we help you today?",
+                not_robot: "I'm not a robot",
+                btn_send: "Send Message Now",
+                copyright: "All Rights Reserved © 2026 Hessatak"
+            },
+            fr: {
+                page_title: "Contactez-nous | Plateforme Hessatak",
+                brand_name: "Hessatak",
+                nav_home: "Accueil",
+                nav_about: "À propos",
+                nav_contact: "Contact",
+                login: "Connexion",
+                subscribe: "S'abonner",
+                status_online: "Notre équipe est disponible",
+                hero_title_1: "Contactez",
+                hero_desc: "Nous sommes là pour vous assurer la meilleure expérience éducative. Envoyez votre demande et notre équipe technique vous répondra sous 24h.",
+                chat_live: "Chat en direct",
+                whatsapp_support: "Support WhatsApp",
+                email_us: "Envoyez-nous un email",
+                hq_title: "Siège Social",
+                hq_address: "King Fahd Road, Al Sahafa, Riyad, Arabie Saoudite",
+                map_soon: "Carte bientôt disponible..",
+                label_name: "Nom",
+                placeholder_name: "Entrez votre nom complet",
+                label_phone: "Numéro de téléphone",
+                label_type: "Type de demande",
+                query_options: ["Inscription nouveau compte", "Problème de paiement", "Suggérer des profs", "Signaler un contenu"],
+                label_message: "Détails du message",
+                placeholder_msg: "Comment pouvons-nous vous aider ?",
+                not_robot: "Je ne suis pas un robot",
+                btn_send: "Envoyer le message",
+                copyright: "Tous droits réservés © 2026 Hessatak"
+            }
+        };
+
+        function changeLanguage(lang) {
+            const html = document.documentElement;
+            html.lang = lang;
+            html.dir = (lang === 'ar') ? 'rtl' : 'ltr';
+
+            // ترجمة النصوص العادية
+            document.querySelectorAll('[data-lang]').forEach(el => {
+                const key = el.getAttribute('data-lang');
+                if (translations[lang][key]) {
+                    el.innerText = translations[lang][key];
+                }
+            });
+
+            // ترجمة الـ Placeholders
+            document.querySelectorAll('[data-placeholder]').forEach(el => {
+                const key = el.getAttribute('data-placeholder');
+                if (translations[lang][key]) {
+                    el.placeholder = translations[lang][key];
+                }
+            });
+
+            // تحديث خيارات الـ Select
+            const selectQuery = document.getElementById('query_type');
+            selectQuery.innerHTML = "";
+            translations[lang].query_options.forEach(opt => {
+                const option = document.createElement('option');
+                option.text = opt;
+                selectQuery.add(option);
+            });
+
+            // حفظ اللغة المفضلة
+            localStorage.setItem('preferredLang', lang);
+        }
+
+        // تشغيل اللغة الافتراضية عند التحميل
+        window.onload = () => {
+            const savedLang = localStorage.getItem('preferredLang') || 'ar';
+            changeLanguage(savedLang);
+        };
+    </script>
+</body>
+
+</html>
