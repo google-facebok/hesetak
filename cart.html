@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عربة التسوق - حصتك</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+        }
+
+        ::-webkit-scrollbar {
+            display: none;
+        }
+
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm px-4 md:px-8 py-4 flex justify-between items-center sticky top-0 z-50">
+        <div class="flex items-center gap-2">
+            <div class="font-bold text-2xl text-[#4D8076]">حصتك<span class="text-[#D98E73]">.</span></div>
+        </div>
+
+        <div class="flex items-center gap-4">
+            <div onclick="window.open('index.html')"
+                class="relative cursor-pointer p-2 hover:bg-gray-100 rounded-full transition"
+                onclick="window.location.href='index.html'">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-600" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                </svg>
+            </div>
+            <div onclick="window.open('cart.html')"
+                class="relative cursor-pointer p-2 bg-gray-100 rounded-full transition">
+                <span
+                    class="absolute -top-1 -right-1 bg-black text-white text-[10px] w-5 h-5 flex items-center justify-center rounded-full border-2 border-white">3</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-600" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M16 11V7a4 4 0 118 0v4M5 9h14l1 12H4L5 9z" />
+                </svg>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-4 md:px-8 py-10">
+        <div class="flex flex-col lg:flex-row gap-10">
+
+            <!-- Cart Items Section (Left) -->
+            <div class="lg:w-2/3">
+                <div class="flex items-center justify-between mb-8">
+                    <h1 class="text-3xl font-black text-gray-900">سلة التسوق</h1>
+                    <span class="text-gray-500 font-medium">3 منتجات</span>
+                </div>
+
+                <!-- Item 1 -->
+                <div
+                    class="bg-white rounded-3xl shadow-sm border border-gray-100 p-5 mb-6 flex flex-col sm:flex-row items-center gap-6 group hover:shadow-md transition-shadow">
+                    <div class="w-32 h-32 flex-shrink-0 bg-gray-50 rounded-2xl overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1509228468518-180dd482180c?auto=format&fit=crop&w=300&q=80"
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                            alt="الرياضيات">
+                    </div>
+
+                    <div class="flex-1 text-right w-full">
+                        <div class="flex justify-between items-start mb-2">
+                            <h2 class="text-xl font-bold text-gray-800">باقة الرياضيات - الابتدائي</h2>
+                            <button class="text-gray-400 hover:text-red-500 transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                </svg>
+                            </button>
+                        </div>
+                        <p class="text-gray-500 text-sm mb-4">8 حصص تعليمية (60 دقيقة لكل حصة)</p>
+
+                        <div class="flex flex-wrap items-center justify-between gap-4">
+                            <div class="flex items-center bg-gray-50 rounded-xl p-1 border border-gray-100">
+                                <button
+                                    class="w-8 h-8 flex items-center justify-center text-gray-500 hover:bg-white hover:shadow-sm rounded-lg transition-all">-</button>
+                                <input type="number" value="1"
+                                    class="w-10 bg-transparent text-center font-bold text-gray-800 focus:outline-none">
+                                <button
+                                    class="w-8 h-8 flex items-center justify-center text-gray-500 hover:bg-white hover:shadow-sm rounded-lg transition-all">+</button>
+                            </div>
+                            <div class="text-left">
+                                <span class="text-sm text-gray-400 block">السعر</span>
+                                <span class="text-xl font-black text-[#4D8076]">56 ريال</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div
+                    class="bg-white rounded-3xl shadow-sm border border-gray-100 p-5 mb-6 flex flex-col sm:flex-row items-center gap-6 group hover:shadow-md transition-shadow">
+                    <div class="w-32 h-32 flex-shrink-0 bg-gray-50 rounded-2xl overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1609599006353-e629aaabfeae?auto=format&fit=crop&w=300&q=80"
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                            alt="القرآن">
+                    </div>
+
+                    <div class="flex-1 text-right w-full">
+                        <div class="flex justify-between items-start mb-2">
+                            <h2 class="text-xl font-bold text-gray-800">باقة القرآن الكريم - التلاوة</h2>
+                            <button class="text-gray-400 hover:text-red-500 transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                </svg>
+                            </button>
+                        </div>
+                        <p class="text-gray-500 text-sm mb-4">2 حصص (تصحيح تلاوة وحفظ)</p>
+
+                        <div class="flex flex-wrap items-center justify-between gap-4">
+                            <div class="flex items-center bg-gray-50 rounded-xl p-1 border border-gray-100">
+                                <button
+                                    class="w-8 h-8 flex items-center justify-center text-gray-500 hover:bg-white hover:shadow-sm rounded-lg transition-all">-</button>
+                                <input type="number" value="2"
+                                    class="w-10 bg-transparent text-center font-bold text-gray-800 focus:outline-none">
+                                <button
+                                    class="w-8 h-8 flex items-center justify-center text-gray-500 hover:bg-white hover:shadow-sm rounded-lg transition-all">+</button>
+                            </div>
+                            <div class="text-left">
+                                <span class="text-sm text-gray-400 block">السعر</span>
+                                <span class="text-xl font-black text-[#4D8076]">128 ريال</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button onclick="window.location.href='index.html'"
+                    class="flex items-center gap-2 text-[#4D8076] font-bold hover:underline transition">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                    العودة للتسوق
+                </button>
+            </div>
+
+            <!-- Sidebar (Right) -->
+            <div class="lg:w-1/3">
+                <div
+                    class="bg-white rounded-[2.5rem] shadow-xl shadow-gray-200/50 p-8 border border-gray-50 sticky top-28">
+                    <h2 class="text-2xl font-black text-gray-800 mb-8 border-b border-gray-50 pb-4">ملخص الطلب</h2>
+
+                    <div class="space-y-4 mb-8">
+                        <div class="flex justify-between items-center text-gray-500">
+                            <span>المجموع الفرعي</span>
+                            <span class="font-bold">184 ريال</span>
+                        </div>
+                        <div class="flex justify-between items-center text-gray-500">
+                            <span>الضريبة (15%)</span>
+                            <span class="font-bold">0.00 ريال</span>
+                        </div>
+                        <div class="pt-4 border-t border-dashed border-gray-200 flex justify-between items-center">
+                            <span class="text-lg font-black text-gray-800">الإجمالي</span>
+                            <span class="text-2xl font-black text-[#4D8076]">184 ريال</span>
+                        </div>
+                    </div>
+
+                    <div class="space-y-3 mb-8">
+                        <p class="text-xs text-gray-400 text-center">بإتمامك للطلب، أنت توافق على الشروط والأحكام</p>
+                        <button
+                            class="w-full bg-[#D98E73] text-white py-4 rounded-2xl font-black text-lg hover:bg-[#c57d63] hover:-translate-y-1 transition-all shadow-lg shadow-[#D98E73]/20">
+                            إتمام الدفع الآمن
+                        </button>
+                    </div>
+
+                    <div
+                        class="flex flex-wrap justify-center gap-4 opacity-40 grayscale hover:grayscale-0 transition-all duration-500">
+                        <img src="https://img.icons8.com/color/48/000000/visa.png" class="h-6" />
+                        <img src="https://img.icons8.com/color/48/000000/mastercard.png" class="h-6" />
+                        <img src="https://img.icons8.com/color/48/000000/apple-pay.png" class="h-6" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="bg-black text-white pt-16 pb-8 px-6 mt-20">
+        <div class="container mx-auto">
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12 text-right mb-12">
+
+                <div class="md:col-span-1">
+                    <div class="flex items-center justify-end mb-6">
+                        <span class="text-3xl font-black text-[#5D9289]" data-lang="logo_name">حصتك<span
+                                class="text-[#D98E73]">.</span></span>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed" data-lang="footer_desc">
+                        المنصة العربية الأولى التي توفر أفضل المعلمين والمعلمات لتقديم الدروس الخاصة للطلاب والطالبات في
+                        منطقة الخليج العربي بأسعار منافسة، ومرونة عالية تتيح إمكانية تغيير المعلمين واختيار الأوقات
+                        المناسبة للحصول على الدروس الخاصة بما يحقق التفوق العلمي للطلاب والطالبات في مسيرتهم التعليمية.
+                    </p>
+
+                    <div class="mt-8 flex flex-col gap-3 items-end">
+                        <h4 class="font-bold mb-2" data-lang="contact_us">تواصل معنا</h4>
+                        <div class="flex gap-4 mb-4">
+                            <a href="https://x.com/moalimy_portal" target="_blank"
+                                class="w-8 h-8 flex items-center justify-center bg-[#1DA1F2] rounded-full hover:scale-110 transition"><img
+                                    src="https://img.icons8.com/ios-filled/24/ffffff/twitter.png" class="w-4 h-4" /></a>
+                            <a href="https://www.instagram.com/moalimy.portal/" target="_blank"
+                                class="w-8 h-8 flex items-center justify-center bg-gradient-to-tr from-yellow-400 via-red-500 to-purple-500 rounded-full hover:scale-110 transition"><img
+                                    src="https://img.icons8.com/ios-filled/24/ffffff/instagram-new.png"
+                                    class="w-4 h-4" /></a>
+                            <a href="https://www.tiktok.com/@moalimy" target="_blank"
+                                class="w-8 h-8 flex items-center justify-center bg-black border border-white rounded-full hover:scale-110 transition"><img
+                                    src="https://img.icons8.com/ios-filled/24/ffffff/tiktok.png" class="w-4 h-4" /></a>
+                        </div>
+                        <div class="flex gap-3">
+                            <a href="https://apps.apple.com/us/app/%D9%85%D8%B9%D9%84%D9%85%D9%8A/id6654920904"
+                                target="_blank">
+                                <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
+                                    class="h-10 cursor-pointer" alt="App Store">
+                            </a>
+                            <a href="https://play.google.com/store/apps/details?id=com.select.moalimy&pli=1"
+                                target="_blank">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
+                                    class="h-10 cursor-pointer" alt="Google Play">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-black mb-8 border-b border-gray-800 pb-2 inline-block"
+                        data-lang="about_title">عن حصتك </h3>
+                    <ul class="space-y-4 text-gray-400">
+                        <li><a href="index.html" class="hover:text-white transition" data-lang="home">الصفحة
+                                الرئيسية</a></li>
+                        <li><a href="login.html" class="hover:text-white transition" data-lang="reg_students">التسجيل
+                                للطلاب
+                                والطالبات</a></li>
+                        <li><a href="login2.html" class="hover:text-white transition" data-lang="reg_teachers">التسجيل
+                                للمعلمين
+                                والمعلمات</a></li>
+                        <li><a href="login_tsh.html" class="hover:text-white transition"
+                                data-lang="reg_marketer">التسجيل كمسوق</a>
+                        </li>
+                        <li><a href="subscriptions.html" class="hover:text-white transition"
+                                data-lang="subscriptions">الاشتراكات</a>
+                        </li>
+                        <li><a href="course_guide.html" class="hover:text-white transition"
+                                data-lang="course_guide">دليل تعريف
+                                المقررات</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-black mb-8 border-b border-gray-800 pb-2 inline-block"
+                        data-lang="more_title">المزيد</h3>
+                    <ul class="space-y-4 text-gray-400">
+                        <li><a href="about_us.html" class="hover:text-white transition" data-lang="about_platform">حول
+                                المنصة</a>
+                        </li>
+                        <li><a href="contact_us.html" class="hover:text-white transition" data-lang="contact_us">تواصل
+                                معنا</a></li>
+                        <li><a href="faq.html" class="hover:text-white transition" data-lang="faq">الأسئلة الشائعة</a>
+                        </li>
+                        <li><a href="how_it_works.html" class="hover:text-white transition" data-lang="how_it_works">كيف
+                                تعمل المنصة</a>
+                        </li>
+                        <li><a href="terms.html" class="hover:text-white transition" data-lang="terms">شروط وأحكام</a>
+                        </li>
+                        <li><a href="privacy.html" class="hover:text-white transition" data-lang="privacy">سياسة
+                                الخصوصية</a></li>
+                    </ul>
+                </div>
+
+                <div class="flex justify-center md:justify-end items-start">
+                    <img src="/path-to-official-logo.png" class="h-20 opacity-80" alt="hstk Logo">
+                </div>
+
+            </div>
+
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-6">
+
+                <div
+                    class="flex flex-wrap gap-4 items-center justify-center grayscale opacity-80 hover:grayscale-0 transition-all">
+                    <div class="bg-white px-3 py-1 rounded text-black text-[10px] font-bold">tabby</div>
+                    <div class="bg-white px-3 py-1 rounded text-black text-[10px] font-bold">tamara</div>
+                    <img src="https://img.icons8.com/color/48/000000/visa.png" class="h-6" />
+                    <img src="https://img.icons8.com/color/48/000000/mastercard.png" class="h-6" />
+                    <img src="https://img.icons8.com/color/48/000000/apple-pay.png" class="h-6" />
+                    <div class="bg-[#007AB7] px-2 py-1 rounded text-white text-[10px]">مدى mada</div>
+                </div>
+
+                <p class="text-gray-500 text-sm" data-lang="copyright">
+                    Copyright © 2026 <span class="text-white">moalimy.com</span> All Rights Reserved
+                </p>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

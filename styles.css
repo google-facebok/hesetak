@@ -1,0 +1,334 @@
+/* Custom Styles from Part 1 */
+.error {
+    border: solid 1px #f00;
+    background: #fcf4f4;
+}
+
+@media only screen and (max-width: 767px) {
+    .class-border {
+        border: 1px solid #aeded4;
+        background-color: rgba(96, 143, 133, 0.07);
+        /* #608f8512 equivalent */
+    }
+}
+
+.dash_inputs label span.view_report_span {
+    color: #608F85;
+    font-size: 16.6px;
+}
+
+/* Header Layout & Shapes */
+.new_header_box {
+    position: relative;
+    width: 100%;
+    z-index: 1000;
+}
+
+.heder_shape1,
+.heder_shape2 {
+    position: absolute;
+    pointer-events: none;
+}
+
+.new_wrapper_heade {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.header_top_right {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.hdr-vid-pgbtn,
+.gift_icon {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    color: #fff;
+    font-size: 14px;
+}
+
+.language_ddrpp {
+    position: absolute;
+    background: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    padding: 10px;
+}
+
+.language_ddrpp ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.language_ddrpp ul li a {
+    color: #333;
+    display: block;
+    padding: 5px 10px;
+    text-decoration: none;
+}
+
+.language_ddrpp ul li a.active {
+    font-weight: bold;
+    color: #608F85;
+}
+
+/* Responsive adjustments */
+@media (max-width: 991px) {
+    .header_top_right {
+        flex-wrap: wrap;
+    }
+}
+
+/* Banner & Hero Section */
+.banner-section {
+    padding: 60px 0;
+    background-color: #f9f9f9;
+}
+
+.banner_imgaes {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.first-rows-imgs,
+.two-rows-imgs {
+    display: flex;
+    gap: 15px;
+}
+
+.images-ban img {
+    width: 100%;
+    border-radius: 15px;
+    object-fit: cover;
+}
+
+.banner-contents h2 {
+    font-size: 24px;
+    color: #608F85;
+    margin-bottom: 10px;
+}
+
+.banner-contents h1 {
+    font-size: 48px;
+    font-weight: 800;
+    margin-bottom: 20px;
+}
+
+/* Tabs & Packages */
+.package-section {
+    padding: 50px 0;
+}
+
+.list-unstyled-tabs {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    border-bottom: 2px solid #eee;
+    overflow-x: auto;
+}
+
+.up-tabs {
+    padding: 15px 25px;
+    cursor: pointer;
+}
+
+.up-tabs.active {
+    border-bottom: 3px solid #608F85;
+}
+
+.educationLavel {
+    text-decoration: none;
+    color: #333;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.multisub-btn {
+    background-color: #608F85;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 30px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.cou_cart {
+    background: #ff4d4d;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 12px;
+    position: relative;
+    top: -10px;
+    right: 5px;
+}
+
+/* Package Cards & Tabs Styles */
+.new_tabs_btns_ul {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 30px;
+    border: none;
+}
+
+.new_tab.subject {
+    background: #f8f9fa;
+    color: #333;
+    border-radius: 20px;
+    padding: 8px 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.new_tab.subject:hover,
+.new_tab.subject.active {
+    background: #608F85;
+    color: #fff;
+}
+
+.package_boxes {
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    margin-bottom: 30px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.packaage_top_boxes {
+    position: relative;
+    text-align: center;
+    color: #fff;
+    padding: 20px;
+    background: #608F85;
+}
+
+.packaage_top_boxes img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+.package_device ul {
+    display: flex;
+    justify-content: space-around;
+    padding: 15px;
+    list-style: none;
+    border-bottom: 1px solid #eee;
+}
+
+.package_device ul li {
+    font-size: 12px;
+    text-align: center;
+}
+
+.package_adv {
+    padding: 20px;
+}
+
+.package_adv h6 {
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.package_adv ul {
+    list-style: none;
+    padding: 0;
+}
+
+.package_adv ul li {
+    font-size: 13px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Buttons within Package Boxes */
+.packages_btns {
+    padding: 0 20px 15px;
+}
+
+.packages_btns a {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: #f1f5f4;
+    color: #444;
+    text-align: center;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.packages_btns a:hover {
+    background-color: #608F85;
+    color: #ffffff;
+    border-color: #608F85;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(96, 143, 133, 0.2);
+}
+
+/* Red Highlight for Urgent Sessions */
+.packages_btns a span {
+    transition: color 0.3s ease;
+}
+
+.packages_btns a:hover span {
+    color: #fff !important;
+    /* يحول كلمة "مستعجلة" للأبيض عند التمرير */
+}
+
+/* Container Adjustments */
+.align-items-stretch {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* Ensure all package boxes in the same row have equal height */
+.row.align-items-stretch {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.package_boxes {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.packaage_btm_boxes {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Utility to hide scrollbar */
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}

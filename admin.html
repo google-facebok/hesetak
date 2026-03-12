@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+        }
+
+        .view-section {
+            display: none;
+        }
+
+        .view-section.active {
+            display: block;
+        }
+
+        .nav-link.active {
+            background-color: #f3f4f6;
+            font-weight: bold;
+            color: #4D8076;
+            border-right: 4px solid #4D8076;
+        }
+
+        [dir="ltr"] .nav-link.active {
+            border-right: 0;
+            border-left: 4px solid #4D8076;
+        }
+
+        /* تحسين الانتقالات للقائمة الجانبية */
+        #sidebar {
+            transition: transform 0.3s ease-in-out;
+        }
+
+        @media (max-width: 768px) {
+            #sidebar.hidden-mobile {
+                transform: translateX(100%);
+            }
+
+            [dir="ltr"] #sidebar.hidden-mobile {
+                transform: translateX(-100%);
+            }
+
+            #sidebar.show-mobile {
+                transform: translateX(0);
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-[#f4f7f6]">
+
+    <div id="main-wrapper" dir="rtl" class="min-h-screen flex overflow-x-hidden">
+
+        <div id="sidebar-overlay" onclick="toggleSidebar()"
+            class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden md:hidden"></div>
+
+        <aside id="sidebar"
+            class="fixed md:relative w-64 bg-white shadow-lg h-full flex flex-col border-l border-r z-50 hidden-mobile md:translate-x-0">
+            <div class="p-6 border-b flex justify-between items-center">
+                <div>
+                    <span class="text-2xl font-bold text-[#4D8076]"><span data-lang="logo">حصتك</span><span
+                            class="text-[#D98E73]">.</span></span>
+                    <p class="text-sm text-gray-400 mt-1" data-lang="side_sub">لوحة التحكم</p>
+                </div>
+                <button onclick="toggleSidebar()" class="md:hidden text-gray-500">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <nav id="sidebar-nav" class="flex-1 p-4 space-y-2 text-gray-600 overflow-y-auto">
+                <a href="javascript:void(0)" onclick="showView('dashboard', this)"
+                    class="nav-link flex items-center gap-3 p-3 rounded-lg hover:bg-gray-100 active">
+                    <span data-lang="side_dash">📊 لوحة التحكم</span>
+                </a>
+                <a href="javascript:void(0)" onclick="showView('students', this)"
+                    class="nav-link flex items-center gap-3 p-3 rounded-lg hover:bg-gray-100">
+                    <span data-lang="side_students">👨‍🎓 الطلاب</span>
+                </a>
+                <a href="javascript:void(0)" onclick="showView('teachers', this)"
+                    class="nav-link flex items-center gap-3 p-3 rounded-lg hover:bg-gray-100">
+                    <span data-lang="side_teachers">👨‍🏫 المعلمين</span>
+                </a>
+                <a href="javascript:void(0)" onclick="showView('lessons', this)"
+                    class="nav-link flex items-center gap-3 p-3 rounded-lg hover:bg-gray-100">
+                    <span data-lang="side_lessons">📚 الدروس</span>
+                </a>
+                <a href="javascript:void(0)" onclick="showView('payments', this)"
+                    class="nav-link flex items-center gap-3 p-3 rounded-lg hover:bg-gray-100">
+                    <span data-lang="side_payments">💳 المدفوعات</span>
+                </a>
+                <a href="javascript:void(0)" onclick="showView('settings', this)"
+                    class="nav-link flex items-center gap-3 p-3 rounded-lg hover:bg-gray-100">
+                    <span data-lang="side_settings">⚙️ الإعدادات</span>
+                </a>
+            </nav>
+
+            <div class="p-4 border-t">
+                <button class="w-full bg-red-500 text-white py-2 rounded-lg hover:bg-red-600 transition"
+                    data-lang="logout">تسجيل الخروج</button>
+            </div>
+        </aside>
+
+        <div class="flex-1 flex flex-col min-w-0">
+
+            <header class="bg-white shadow-sm px-4 md:px-8 py-4 flex justify-between items-center sticky top-0 z-30">
+                <div class="flex items-center gap-4">
+                    <button onclick="toggleSidebar()" class="md:hidden p-2 rounded-lg bg-gray-100 text-[#4D8076]">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16m-7 6h7"></path>
+                        </svg>
+                    </button>
+                    <h1 id="page-title" class="text-lg md:text-xl font-bold text-gray-700 truncate"
+                        data-lang="nav_title">لوحة تحكم الإدارة</h1>
+                </div>
+
+                <div class="flex items-center gap-3 md:gap-6">
+                    <div class="relative group">
+                        <button
+                            class="flex items-center gap-1 md:gap-2 bg-gray-50 px-2 md:px-3 py-2 rounded-lg border hover:bg-gray-100 transition text-sm">
+                            <span id="lang-label">العربية</span>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div
+                            class="absolute hidden group-hover:block top-full left-0 md:right-0 mt-1 w-32 bg-white border rounded-lg shadow-xl z-50 overflow-hidden">
+                            <button onclick="changeLanguage('ar')"
+                                class="w-full text-start px-4 py-2 hover:bg-gray-100 text-sm border-b">العربية</button>
+                            <button onclick="changeLanguage('en')"
+                                class="w-full text-start px-4 py-2 hover:bg-gray-100 text-sm border-b">English</button>
+                            <button onclick="changeLanguage('fr')"
+                                class="w-full text-start px-4 py-2 hover:bg-gray-100 text-sm">Français</button>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <img src="https://i.pravatar.cc/40" class="w-8 h-8 md:w-10 md:h-10 rounded-full border">
+                        <span class="font-bold text-gray-600 hidden lg:inline text-sm">Admin</span>
+                    </div>
+                </div>
+            </header>
+
+            <main class="p-4 md:p-8">
+
+                <section id="view-dashboard" class="view-section active space-y-6 md:space-y-8">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+                        <div class="bg-white p-6 rounded-xl shadow-sm border">
+                            <p class="text-gray-400 text-xs md:text-sm uppercase font-bold" data-lang="stat_students">
+                                عدد الطلاب</p>
+                            <h2 class="text-2xl md:text-3xl font-bold text-[#4D8076] mt-2">1,245</h2>
+                        </div>
+                        <div class="bg-white p-6 rounded-xl shadow-sm border">
+                            <p class="text-gray-400 text-xs md:text-sm uppercase font-bold" data-lang="stat_teachers">
+                                عدد المعلمين</p>
+                            <h2 class="text-2xl md:text-3xl font-bold text-[#4D8076] mt-2">320</h2>
+                        </div>
+                        <div class="bg-white p-6 rounded-xl shadow-sm border">
+                            <p class="text-gray-400 text-xs md:text-sm uppercase font-bold" data-lang="stat_lessons">
+                                الدروس المحجوزة</p>
+                            <h2 class="text-2xl md:text-3xl font-bold text-[#4D8076] mt-2">5,430</h2>
+                        </div>
+                        <div class="bg-white p-6 rounded-xl shadow-sm border">
+                            <p class="text-gray-400 text-xs md:text-sm uppercase font-bold" data-lang="stat_revenue">
+                                الإيرادات</p>
+                            <h2 class="text-2xl md:text-3xl font-bold text-[#D98E73] mt-2">$12,400</h2>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-sm p-6 border min-h-[300px]">
+                        <h2 class="text-xl font-bold text-gray-700" data-lang="table_title">أحدث المستخدمين</h2>
+                        <div
+                            class="mt-8 border-2 border-dashed border-gray-100 rounded-lg flex items-center justify-center h-48">
+                            <p class="text-gray-400 italic">محتوى لوحة التحكم الرئيسي هنا...</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="view-students" class="view-section space-y-6">
+                    <h2 class="text-2xl font-bold text-[#4D8076]" data-lang="side_students">👨‍🎓 الطلاب</h2>
+                    <div class="bg-white p-6 md:p-8 rounded-xl border shadow-sm">
+                        <p class="text-gray-500">هنا سيتم عرض قائمة الطلاب وبياناتهم...</p>
+                    </div>
+                </section>
+
+                <section id="view-teachers" class="view-section space-y-6">
+                    <h2 class="text-2xl font-bold text-[#4D8076]" data-lang="side_teachers">👨‍🏫 المعلمين</h2>
+                    <div class="bg-white p-8 rounded-xl border shadow-sm">
+                        <p class="text-gray-500">هنا سيتم إدارة بيانات المعلمين...</p>
+                    </div>
+                </section>
+
+                <section id="view-lessons" class="view-section space-y-6">
+                    <h2 class="text-2xl font-bold text-[#4D8076]" data-lang="side_lessons">📚 الدروس</h2>
+                    <div class="bg-white p-8 rounded-xl border shadow-sm">
+                        <p class="text-gray-500">جدول الحصص والدروس القادمة...</p>
+                    </div>
+                </section>
+
+                <section id="view-payments" class="view-section space-y-6">
+                    <h2 class="text-2xl font-bold text-[#D98E73]" data-lang="side_payments">💳 المدفوعات</h2>
+                    <div class="bg-white p-8 rounded-xl border shadow-sm">
+                        <p class="text-gray-500">سجل الفواتير والعمليات المالية...</p>
+                    </div>
+                </section>
+
+                <section id="view-settings" class="view-section space-y-6">
+                    <h2 class="text-2xl font-bold text-gray-700" data-lang="side_settings">⚙️ الإعدادات</h2>
+                    <div class="bg-white p-8 rounded-xl border shadow-sm">
+                        <p class="text-gray-500">إعدادات المنصة، الحساب، والتنبيهات...</p>
+                    </div>
+                </section>
+
+            </main>
+        </div>
+    </div>
+
+    <script>
+        // التحكم في القائمة الجانبية للموبايل
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebar-overlay');
+
+            sidebar.classList.toggle('hidden-mobile');
+            sidebar.classList.toggle('show-mobile');
+            overlay.classList.toggle('hidden');
+        }
+
+        // وظيفة التنقل بين الصفحات
+        function showView(viewId, element) {
+            // إخفاء الأقسام
+            document.querySelectorAll('.view-section').forEach(section => section.classList.remove('active'));
+
+            // إظهار القسم المطلوب
+            const targetView = document.getElementById('view-' + viewId);
+            if (targetView) targetView.classList.add('active');
+
+            // تحديث الروابط
+            document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
+            element.classList.add('active');
+
+            // إغلاق المينيو بعد الاختيار في الموبايل
+            if (window.innerWidth < 768) {
+                toggleSidebar();
+            }
+        }
+
+        const translations = {
+            ar: {
+                logo: "حصتك", side_sub: "لوحة التحكم", side_dash: "📊 لوحة التحكم", side_students: "👨‍🎓 الطلاب",
+                side_teachers: "👨‍🏫 المعلمين", side_lessons: "📚 الدروس", side_payments: "💳 المدفوعات",
+                side_settings: "⚙️ الإعدادات", logout: "تسجيل الخروج", nav_title: "لوحة تحكم الإدارة",
+                stat_students: "عدد الطلاب", stat_teachers: "عدد المعلمين", stat_lessons: "الدروس المحجوزة", stat_revenue: "الإيرادات",
+                lang_name: "العربية"
+            },
+            en: {
+                logo: "Hestak", side_sub: "Control Panel", side_dash: "📊 Dashboard", side_students: "👨‍🎓 Students",
+                side_teachers: "👨‍🏫 Teachers", side_lessons: "📚 Lessons", side_payments: "💳 Payments",
+                side_settings: "⚙️ Settings", logout: "Logout", nav_title: "Admin Dashboard",
+                stat_students: "Total Students", stat_teachers: "Total Teachers", stat_lessons: "Booked Lessons", stat_revenue: "Revenue",
+                lang_name: "English"
+            },
+            fr: {
+                logo: "Hestak", side_sub: "Tableau de bord", side_dash: "📊 Dashboard", side_students: "👨‍🎓 Étudiants",
+                side_teachers: "👨‍🏫 Enseignants", side_lessons: "📚 Leçons", side_payments: "💳 Paiements",
+                side_settings: "⚙️ Paramètres", logout: "Déconnexion", nav_title: "Tableau de Bord Admin",
+                stat_students: "Total Étudiants", stat_teachers: "Total Enseignants", stat_lessons: "Leçons Réservées", stat_revenue: "Revenus",
+                lang_name: "Français"
+            }
+        };
+
+        function changeLanguage(lang) {
+            localStorage.setItem('adminLang', lang);
+            document.getElementById('main-wrapper').dir = (lang === 'ar') ? 'rtl' : 'ltr';
+            document.querySelectorAll('[data-lang]').forEach(el => {
+                const key = el.getAttribute('data-lang');
+                if (translations[lang][key]) el.innerText = translations[lang][key];
+            });
+            document.getElementById('lang-label').innerText = translations[lang]['lang_name'];
+        }
+
+        window.onload = () => {
+            const savedLang = localStorage.getItem('adminLang') || 'ar';
+            changeLanguage(savedLang);
+        };
+    </script>
+
+</body>
+
+</html>

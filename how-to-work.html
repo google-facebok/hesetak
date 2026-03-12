@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>كيف تعمل المنصة - حصتك</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        .active-tab {
+            background-color: #4D8076 !important;
+            color: white !important;
+        }
+
+        .step-card {
+            transition: all 0.3s ease;
+        }
+
+        .step-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+</head>
+
+<body class="bg-[#F8F9FA] text-gray-800">
+
+    <nav class="flex items-center justify-between px-4 md:px-8 py-4 shadow-sm bg-white sticky top-0 z-50">
+        <div class="flex items-center gap-4">
+            <div class="font-bold text-2xl text-[#4D8076]">حصتك<span class="text-[#D98E73]">.</span></div>
+            <div class="hidden sm:block h-8 w-[1px] bg-gray-200 mx-2"></div>
+            <div class="hidden md:block text-[10px] text-gray-500 leading-tight">
+                <span data-i18n="accredited">المنصة معتمدة من:</span><br>
+                <span class="font-bold text-gray-700" data-i18n="center_name">المركز الوطني للتعليم الإلكتروني</span>
+            </div>
+        </div>
+
+        <div class="flex items-center gap-3">
+            <select onchange="changeLanguage(this.value)"
+                class="bg-gray-50 border border-gray-200 text-sm rounded-lg p-2 outline-none">
+                <option value="ar">العربية</option>
+                <option value="en">English</option>
+                <option value="fr">Français</option>
+            </select>
+            <button
+                class="bg-[#4D8076] text-white px-6 py-2 rounded-full font-bold text-sm hover:bg-[#3d665e] transition"
+                data-i18n="join_us">اشترك معنا</button>
+        </div>
+    </nav>
+
+    <section class="bg-white py-12 border-b">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-3xl md:text-5xl font-black text-[#D98E73] mb-4" data-i18n="how_it_works_title">كيف تعمل
+                المنصة</h1>
+            <p class="text-gray-500 max-w-2xl mx-auto" data-i18n="how_it_works_desc">تعرف على خطوات بسيطة لتبدأ رحلتك
+                التعليمية أو المهنية معنا في منصة حصتك.</p>
+        </div>
+    </section>
+
+    <div class="container mx-auto px-4 -mt-8 relative z-10">
+        <div class="flex justify-center gap-2 max-w-md mx-auto bg-white p-2 rounded-2xl shadow-lg border">
+            <button onclick="switchTab('student')" id="studentBtn"
+                class="flex-1 py-3 rounded-xl font-bold transition active-tab" data-i18n="tab_students">الطلاب
+                والطالبات</button>
+            <button onclick="switchTab('teacher')" id="teacherBtn"
+                class="flex-1 py-3 rounded-xl font-bold transition text-gray-500 hover:bg-gray-50"
+                data-i18n="tab_teachers">المعلمين والمعلمات</button>
+        </div>
+    </div>
+
+    <main class="container mx-auto px-4 py-16">
+
+        <div id="studentSection" class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="step-card bg-white p-8 rounded-3xl shadow-sm border text-center">
+                <div
+                    class="w-16 h-16 bg-[#FDF2F0] text-[#D98E73] rounded-2xl flex items-center justify-center mx-auto mb-6 text-3xl font-black">
+                    1</div>
+                <h3 class="text-xl font-bold mb-4" data-i18n="s_step1_t">قم بإنشاء حسابك</h3>
+                <p class="text-gray-500 leading-relaxed" data-i18n="s_step1_d">سجل بياناتك وفعل حسابك، ثم اختر الباقة
+                    التعليمية المناسبة لاحتياجاتك.</p>
+            </div>
+            <div class="step-card bg-white p-8 rounded-3xl shadow-sm border text-center">
+                <div
+                    class="w-16 h-16 bg-[#EEF4F3] text-[#4D8076] rounded-2xl flex items-center justify-center mx-auto mb-6 text-3xl font-black">
+                    2</div>
+                <h3 class="text-xl font-bold mb-4" data-i18n="s_step2_t">ابحث عن معلم</h3>
+                <p class="text-gray-500 leading-relaxed" data-i18n="s_step2_d">تصفح قائمة المعلمين المميزين واختر المعلم
+                    المناسب وحدد أوقات الحصص.</p>
+            </div>
+            <div class="step-card bg-white p-8 rounded-3xl shadow-sm border text-center">
+                <div
+                    class="w-16 h-16 bg-[#FDF2F0] text-[#D98E73] rounded-2xl flex items-center justify-center mx-auto mb-6 text-3xl font-black">
+                    3</div>
+                <h3 class="text-xl font-bold mb-4" data-i18n="s_step3_t">ابدأ التعلم</h3>
+                <p class="text-gray-500 leading-relaxed" data-i18n="s_step3_d">احضر دروسك التفاعلية عن بعد وراجع تقارير
+                    الحصص لتحقيق أفضل النتائج.</p>
+            </div>
+        </div>
+
+        <div id="teacherSection" class="hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="step-card bg-white p-6 rounded-3xl shadow-sm border text-center">
+                <div class="text-[#4D8076] mb-4 text-4xl">📝</div>
+                <h3 class="font-bold mb-2" data-i18n="t_step1_t">سجل كمعلم</h3>
+                <p class="text-sm text-gray-500" data-i18n="t_step1_d">أنشئ حسابك وارفع مؤهلاتك العلمية للمراجعة.</p>
+            </div>
+            <div class="step-card bg-white p-6 rounded-3xl shadow-sm border text-center">
+                <div class="text-[#D98E73] mb-4 text-4xl">🕒</div>
+                <h3 class="font-bold mb-2" data-i18n="t_step2_t">حدد ساعاتك</h3>
+                <p class="text-sm text-gray-500" data-i18n="t_step2_d">اختر الأوقات والأيام التي تناسبك للعمل بمرونة
+                    تامة.</p>
+            </div>
+            <div class="step-card bg-white p-6 rounded-3xl shadow-sm border text-center">
+                <div class="text-[#4D8076] mb-4 text-4xl">💻</div>
+                <h3 class="font-bold mb-2" data-i18n="t_step3_t">قدم دروسك</h3>
+                <p class="text-sm text-gray-500" data-i18n="t_step3_d">استقبل الحجوزات وقدم دروسك عبر نظامنا التفاعلي.
+                </p>
+            </div>
+            <div class="step-card bg-white p-6 rounded-3xl shadow-sm border text-center">
+                <div class="text-[#D98E73] mb-4 text-4xl">💰</div>
+                <h3 class="font-bold mb-2" data-i18n="t_step4_t">استلم مستحقاتك</h3>
+                <p class="text-sm text-gray-500" data-i18n="t_step4_d">احصل على دخلك الشهري وتقييمات الطلاب العالية.</p>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const translations = {
+            ar: {
+                accredited: "المنصة معتمدة من:",
+                center_name: "المركز الوطني للتعليم الإلكتروني",
+                join_us: "اشترك معنا",
+                how_it_works_title: "كيف تعمل المنصة",
+                how_it_works_desc: "تعرف على خطوات بسيطة لتبدأ رحلتك التعليمية أو المهنية معنا في منصة حصتك.",
+                tab_students: "الطلاب والطالبات",
+                tab_teachers: "المعلمين والمعلمات",
+                s_step1_t: "قم بإنشاء حسابك",
+                s_step1_d: "سجل بياناتك وفعل حسابك، ثم اختر الباقة التعليمية المناسبة لاحتياجاتك.",
+                s_step2_t: "ابحث عن معلم",
+                s_step2_d: "تصفح قائمة المعلمين المميزين واختر المعلم المناسب وحدد أوقات الحصص.",
+                s_step3_t: "ابدأ التعلم",
+                s_step3_d: "احضر دروسك التفاعلية عن بعد وراجع تقارير الحصص لتحقيق أفضل النتائج.",
+                t_step1_t: "سجل كمعلم",
+                t_step1_d: "أنشئ حسابك وارفع مؤهلاتك العلمية للمراجعة من فريقنا.",
+                t_step2_t: "حدد ساعاتك",
+                t_step2_d: "اختر الأوقات والأيام التي تناسبك للعمل بمرونة تامة.",
+                t_step3_t: "قدم دروسك",
+                t_step3_d: "استقبل الحجوزات وقدم دروسك عبر نظامنا التفاعلي المتطور.",
+                t_step4_t: "استلم مستحقاتك",
+                t_step4_d: "احصل على دخلك الشهري بناءً على الحصص التي قدمتها."
+            },
+            en: {
+                accredited: "Accredited by:",
+                center_name: "National eLearning Center",
+                join_us: "Join Us",
+                how_it_works_title: "How It Works",
+                how_it_works_desc: "Learn the simple steps to start your educational or professional journey with Hesstak.",
+                tab_students: "Students",
+                tab_teachers: "Teachers",
+                s_step1_t: "Create Account",
+                s_step1_d: "Register and verify your account, then choose the package that fits your needs.",
+                s_step2_t: "Find a Tutor",
+                s_step2_d: "Browse our elite tutors, pick your favorite, and schedule your sessions.",
+                s_step3_t: "Start Learning",
+                s_step3_d: "Attend interactive online sessions and track your academic progress.",
+                t_step1_t: "Register as Tutor",
+                t_step1_d: "Create your profile and upload your credentials for review.",
+                t_step2_t: "Set Availability",
+                t_step2_d: "Choose your working days and hours with total flexibility.",
+                t_step3_t: "Give Lessons",
+                t_step3_d: "Accept bookings and teach using our advanced interactive tools.",
+                t_step4_t: "Get Paid",
+                t_step4_d: "Receive your monthly income based on the lessons delivered."
+            },
+            fr: {
+                accredited: "Accrédité par:",
+                center_name: "Centre National d'eLearning",
+                join_us: "S'inscrire",
+                how_it_works_title: "Comment ça marche",
+                how_it_works_desc: "Découvrez les étapes simples pour commencer votre parcours avec nous.",
+                tab_students: "Étudiants",
+                tab_teachers: "Enseignants",
+                s_step1_t: "Créer un compte",
+                s_step1_d: "Inscrivez-vous et choisissez le forfait qui vous convient.",
+                s_step2_t: "Trouver un tuteur",
+                s_step2_d: "Parcourez nos tuteurs et planifiez vos cours.",
+                s_step3_t: "Apprendre",
+                s_step3_d: "Assistez aux cours en ligne et suivez vos progrès.",
+                t_step1_t: "Devenir Enseignant",
+                t_step1_d: "Créez votre profil et téléchargez vos diplômes.",
+                t_step2_t: "Fixer vos horaires",
+                t_step2_d: "Choisissez vos jours et heures de travail librement.",
+                t_step3_t: "Donner des cours",
+                t_step3_d: "Acceptez les réservations et enseignez en ligne.",
+                t_step4_t: "Être payé",
+                t_step4_d: "Recevez votre revenu mensuel selon vos cours."
+            }
+        };
+
+        function changeLanguage(lang) {
+            document.documentElement.lang = lang;
+            document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
+
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                element.textContent = translations[lang][key];
+            });
+        }
+
+        function switchTab(type) {
+            const studentBtn = document.getElementById('studentBtn');
+            const teacherBtn = document.getElementById('teacherBtn');
+            const studentSection = document.getElementById('studentSection');
+            const teacherSection = document.getElementById('teacherSection');
+
+            if (type === 'student') {
+                studentBtn.classList.add('active-tab');
+                teacherBtn.classList.remove('active-tab');
+                studentSection.classList.remove('hidden');
+                teacherSection.classList.add('hidden');
+            } else {
+                teacherBtn.classList.add('active-tab');
+                studentBtn.classList.remove('active-tab');
+                teacherSection.classList.remove('hidden');
+                studentSection.classList.add('hidden');
+            }
+        }
+    </script>
+</body>
+
+</html>

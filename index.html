@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منصتي التعليمية - الواجهة الرئيسية</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+        }
+
+        .custom-shape-1 {
+            border-radius: 50px 0 50px 0;
+        }
+
+        .custom-shape-2 {
+            border-radius: 0 50px 0 50px;
+        }
+    </style>
+</head>
+
+<body class="bg-white text-gray-800">
+
+    <nav class="flex items-center justify-between px-4 md:px-8 py-4 shadow-sm bg-white sticky top-0 z-50">
+        <div class="flex items-center gap-2 md:gap-4">
+            <!-- Mobile Menu Button -->
+            <button id="mobileMenuBtn" class="lg:hidden text-gray-600 focus:outline-none">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+
+            <div class="font-bold text-xl md:text-2xl text-[#4D8076]" data-lang="logo_name">حصتك<span
+                    class="text-[#D98E73]">.</span></div>
+            <div class="h-10 w-[1px] bg-gray-200 mx-1 md:mx-2 hidden sm:block"></div>
+            <div class="text-[8px] md:text-[10px] leading-tight text-gray-500 hidden sm:block">
+                <span data-lang="accredited_by">المنصة معتمدة من:</span><br>
+                <span class="font-bold text-gray-700 text-[10px] md:text-[12px]" data-lang="center_name">المركز الوطني
+                    للتعليم الإلكتروني</span>
+            </div>
+        </div>
+
+        <!-- Desktop Menu -->
+        <div class="hidden lg:flex items-center gap-3">
+            <button onclick="window.location.href='video.html'"
+                class="bg-[#D98E73] text-white px-5 py-2 rounded-full flex items-center gap-2 hover:bg-[#c57d63] transition shrink-0"
+                data-lang="nav_videos">
+                <span>🎥</span> فيديوهات تعليمية
+            </button>
+            <button onclick="window.location.href='boox.html'"
+                class="border border-gray-300 text-gray-600 px-5 py-2 rounded-full flex items-center gap-2 hover:bg-gray-50 shrink-0"
+                data-lang="nav_gifts">
+                <span>🎁</span> بطاقات هدايا
+            </button>
+            <div class="relative inline-block">
+                <span onclick="toggleMenu()" class="font-bold text-gray-400 px-2 cursor-pointer hover:text-gray-600"
+                    data-lang="lang_toggle">
+                    ع
+                </span>
+                <div id="langMenu" class="hidden absolute right-0 mt-2 w-32 bg-white border rounded shadow">
+                    <p class="px-3 py-2 hover:bg-gray-100 cursor-pointer" onclick="changeLanguage('ar')">العربية</p>
+                    <p class="px-3 py-2 hover:bg-gray-100 cursor-pointer" onclick="changeLanguage('en')">English</p>
+                    <p class="px-3 py-2 hover:bg-gray-100 cursor-pointer" onclick="changeLanguage('fr')">Français</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex items-center gap-2 md:gap-4">
+            <button onclick="window.location.href='login.html'"
+                class="bg-[#4D8076] text-white px-4 md:px-8 py-2 rounded-full font-bold hover:bg-[#3d665e] transition text-sm md:text-base"
+                data-lang="subscribe">
+                اشترك معنا
+            </button>
+            <button onclick="window.location.href='login2.html'"
+                class="bg-gray-100 text-gray-700 px-4 md:px-6 py-2 rounded-full font-medium hover:bg-gray-200 text-sm md:text-base hidden sm:block"
+                data-lang="login">
+                دخول
+            </button>
+            <div class="relative cursor-pointer">
+                <span 
+                onclick="window.location.href='cart.html'"
+                    class="absolute -top-2 -right-2 bg-black text-white text-[10px] w-5 h-5 flex items-center justify-center rounded-full">0</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-600" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+            </div>
+        </div>
+
+        <!-- Mobile Side Menu -->
+        <div id="sideMenu" class="fixed inset-0 bg-black bg-opacity-50 z-[60] hidden transition-opacity">
+            <div class="fixed top-0 right-0 h-full w-64 bg-white shadow-lg p-6 flex flex-col gap-6 transform translate-x-full transition-transform duration-300"
+                id="sideMenuContent">
+                <button id="closeMenuBtn" class="self-start text-gray-600">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+                <div class="flex flex-col gap-4">
+                    <a href="video.html" class="flex items-center gap-2 text-lg font-bold text-gray-700"
+                        data-lang="nav_videos"><span>🎥</span>
+                        فيديوهات تعليمية</a>
+                    <a href="boox.html" class="flex items-center gap-2 text-lg font-bold text-gray-700"
+                        data-lang="nav_gifts"><span>🎁</span>
+                        بطاقات هدايا</a>
+                    <a href="login2.html" class="flex items-center gap-2 text-lg font-bold text-gray-700 sm:hidden"
+                        data-lang="login"><span>👤</span>
+                        دخول</a>
+                    <hr>
+                    <div class="flex flex-col gap-2">
+                        <p class="font-bold text-gray-400" data-lang="lang_label">اللغة</p>
+                        <p class="px-3 py-2 hover:bg-gray-100 cursor-pointer rounded" onclick="changeLanguage('ar')">
+                            العربية</p>
+                        <p class="px-3 py-2 hover:bg-gray-100 cursor-pointer rounded" onclick="changeLanguage('en')">
+                            English</p>
+                        <p class="px-3 py-2 hover:bg-gray-100 cursor-pointer rounded" onclick="changeLanguage('fr')">
+                            Français</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section
+        class="container mx-auto px-4 md:px-8 py-8 md:py-16 flex flex-col-reverse md:flex-row items-center gap-8 md:gap-12">
+
+        <div class="w-full md:w-1/2 grid grid-cols-2 gap-2 md:gap-3">
+            <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=400&q=80"
+                class="custom-shape-1 w-full h-32 md:h-44 object-cover shadow-lg" alt="student">
+            <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=400&q=80"
+                class="custom-shape-2 w-full h-32 md:h-44 object-cover shadow-lg" alt="student">
+            <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&w=400&q=80"
+                class="custom-shape-2 w-full h-32 md:h-44 object-cover shadow-lg" alt="student">
+            <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=400&q=80"
+                class="custom-shape-1 w-full h-32 md:h-44 object-cover shadow-lg" alt="student">
+        </div>
+
+        <div class="w-full md:w-1/2 text-right">
+            <div class="flex items-center gap-3 mb-4 md:mb-6">
+                <div class="flex gap-1">
+                    <div class="w-2 md:w-3 h-2 md:h-3 rotate-45 bg-[#4D8076]"></div>
+                    <div class="w-2 md:w-3 h-2 md:h-3 rotate-45 bg-[#D98E73]"></div>
+                    <div class="w-2 md:w-3 h-2 md:h-3 rotate-45 bg-[#4D8076]"></div>
+                </div>
+                <h2 class="text-lg md:text-2xl font-bold text-gray-800" data-lang="hero_sub">المنصة الأولى لتوفير معلمين
+                    ومعلمات</h2>
+            </div>
+
+            <h1 class="text-3xl md:text-6xl font-black text-[#D98E73] mb-4 md:mb-8 leading-[1.3]"
+                data-lang="hero_title">
+                التدريس الخاص <br> عن بعد
+            </h1>
+
+            <p class="text-gray-500 text-base md:text-lg leading-relaxed max-w-xl" data-lang="hero_desc">
+                تم تصميم منصة حصتك بشكل مبتكر لتوفير خيارات متعددة للحصول على نخبة من المعلمين والمعلمات لتقديم الدروس
+                الخاصة عن بعد لتحقيق التفوق العلمي للطلاب والطالبات.
+            </p>
+        </div>
+    </section>
+
+    <div class="text-center py-10">
+        <h2 class="text-3xl font-bold text-gray-800" data-lang="choose_package">اختر الباقة المناسبة</h2>
+    </div>
+
+    <div
+        class="fixed bottom-8 left-8 bg-[#25D366] p-4 rounded-full shadow-2xl cursor-pointer hover:scale-110 transition-transform z-50">
+        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white" viewBox="0 0 24 24">
+            <path
+                d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.246 2.248 3.484 5.232 3.484 8.412-.003 6.557-5.338 11.892-11.893 11.892-1.997-.001-3.951-.5-5.688-1.448l-6.309 1.656zm6.29-4.143c1.589.943 3.503 1.441 5.451 1.442 5.566 0 10.091-4.523 10.091-10.088s-4.525-10.089-10.092-10.089c-2.699 0-5.237 1.051-7.144 2.96s-2.959 4.444-2.959 7.143c0 1.9.482 3.75 1.396 5.38l-1.011 3.693 3.769-.989z" />
+        </svg>
+
+    </div>
+    <section class="bg-[#F9F9F9] py-16 px-8">
+        <div class="container mx-auto">
+
+            <!-- تبويبات المرحلة -->
+            <div class="flex flex-nowrap md:flex-wrap overflow-x-auto md:overflow-visible items-center gap-1 bg-white p-2 rounded-t-2xl shadow-sm border-b border-gray-100 no-scrollbar"
+                id="tab-buttons">
+                <button
+                    class="active whitespace-nowrap items-center gap-2 px-6 py-3 text-gray-500 rounded-lg transition"
+                    data-lang="tab_elementary">
+                    <span>🏫 الابتدائي</span>
+                </button>
+                <button class="whitespace-nowrap flex items-center gap-2 px-6 py-3 text-gray-500 rounded-lg transition"
+                    data-lang="tab_middle">
+                    <span>🎓 المتوسط</span>
+                </button>
+                <button class="whitespace-nowrap flex items-center gap-2 px-6 py-3 text-gray-500 rounded-lg transition"
+                    data-lang="tab_high">
+                    <span>👨‍🏫 الثانوي</span>
+                </button>
+                <button class="whitespace-nowrap flex items-center gap-2 px-6 py-3 text-gray-500 rounded-lg transition"
+                    data-lang="tab_international">
+                    <span>🌐 دولي</span>
+                </button>
+                <button class="whitespace-nowrap flex items-center gap-2 px-6 py-3 text-gray-500 rounded-lg transition"
+                    data-lang="tab_university">
+                    <span>🏛️ الجامعة</span>
+                </button>
+                <button class="whitespace-nowrap flex items-center gap-2 px-6 py-3 text-gray-500 rounded-lg transition"
+                    data-lang="tab_qiyas">
+                    <span>📊 قياس</span>
+                </button>
+                <button class="whitespace-nowrap flex items-center gap-2 px-6 py-3 text-gray-500 rounded-lg transition"
+                    data-lang="tab_skills">
+                    <span>💡 مهارات</span>
+                </button>
+                <button
+                    class="md:mr-auto whitespace-nowrap px-6 py-3 bg-[#5D9289] text-white rounded-lg font-bold flex items-center gap-2"
+                    data-lang="btn_diverse_package">
+                    باقة متنوعة ✨
+                </button>
+            </div>
+
+            <!-- مواد الدورة -->
+            <div class="flex flex-nowrap md:flex-wrap overflow-x-auto md:overflow-visible justify-start md:justify-center gap-3 bg-white p-6 shadow-sm mb-10 rounded-b-2xl no-scrollbar"
+                id="subject-buttons">
+                <button
+                    class="active whitespace-nowrap border border-gray-200 px-6 py-2 rounded-lg hover:border-[#4D8076]  transition"
+                    data-lang="subj_kids_foundation">تأسيس الأطفال</button>
+                <button
+                    class="whitespace-nowrap border border-gray-200 px-6 py-2 rounded-lg hover:border-[#4D8076]  transition"
+                    data-lang="subj_quran">القرآن الكريم</button>
+                <button
+                    class="whitespace-nowrap border border-gray-200 px-6 py-2 rounded-lg hover:border-[#4D8076]  transition"
+                    data-lang="subj_math">الرياضيات</button>
+                <button
+                    class="whitespace-nowrap border border-gray-200 px-6 py-2 rounded-lg hover:border-[#4D8076]  transition"
+                    data-lang="subj_science">العلوم</button>
+                <button
+                    class="whitespace-nowrap border border-gray-200 px-6 py-2 rounded-lg hover:border-[#4D8076] transition"
+                    data-lang="subj_arabic">اللغة العربية</button>
+                <button
+                    class="whitespace-nowrap border border-gray-200 px-6 py-2 rounded-lg hover:border-[#4D8076]  transition"
+                    data-lang="subj_english">اللغة الإنجليزية</button>
+                <button
+                    class="whitespace-nowrap border border-gray-200 px-6 py-2 rounded-lg hover:border-[#4D8076]  transition"
+                    data-lang="subj_social">الاجتماعيات</button>
+            </div>
+
+            <script>
+                // زرار التبويبات
+                const tabButtons = document.querySelectorAll('#tab-buttons button');
+                tabButtons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        tabButtons.forEach(btn => btn.classList.remove('active', 'bg-[#4D8076]', 'text-white'));
+                        button.classList.add('active', 'bg-[#4D8076]', 'text-white');
+                    });
+                });
+
+                // زرار المواد
+                const subjectButtons = document.querySelectorAll('#subject-buttons button');
+                subjectButtons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        subjectButtons.forEach(btn => btn.classList.remove('active-btn', 'bg-[#4D8076]', 'text-white'));
+                        button.classList.add('active-btn', 'bg-[#4D8076]', 'text-white');
+                    });
+                });
+            </script>
+
+            <style>
+                /* تبويبات المرحلة */
+                #tab-buttons button.active {
+                    background-color: #4D8076;
+                    color: white;
+                    box-shadow: 0 0 10px rgba(77, 128, 118, 0.7);
+                    transform: scale(1.05);
+                    transition: all 0.2s ease-in-out;
+                }
+
+                /* المواد */
+                .active-btn {
+                    border-color: #4D8076 !important;
+                    font-weight: bold;
+                }
+            </style>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                <div
+                    class="bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition-shadow border border-gray-100">
+                    <div class="relative h-48 bg-gray-800">
+                        <img src="https://images.unsplash.com/photo-1509228468518-180dd482180c?auto=format&fit=crop&w=500&q=80"
+                            class="w-full h-full object-cover opacity-60" alt="math">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <h3 class="text-white text-3xl font-bold" data-lang="pkg_math_title">باقة الرياضيات</h3>
+                        </div>
+                    </div>
+                    <div class="p-8 text-right">
+                        <div class="flex gap-4 text-xs text-gray-400 mb-4">
+                            <span data-lang="feat_comp">💻 كمبيوتر</span>
+                            <span data-lang="feat_ipad">📱 آيباد</span>
+                            <span data-lang="feat_smart">📱 أجهزة ذكية</span>
+                        </div>
+                        <h4 class="text-xl font-bold text-gray-800 mb-4" data-lang="pkg_math_desc">معلم أو معلمة لمادة
+                            الرياضيات لجميع صفوف
+                            المرحلة الابتدائية :</h4>
+                        <ul class="space-y-3 text-gray-600">
+                            <li class="flex items-center gap-2" data-lang="feat_duration">🔹 مدة الحصة 60 دقيقة</li>
+                            <li class="flex items-center gap-2" data-lang="feat_followup">🔹 متابعة الدروس</li>
+                            <li class="flex items-center gap-2" data-lang="feat_homework">🔹 مساعدة في حل الواجبات</li>
+                            <li class="flex items-center gap-2" data-lang="feat_tests">🔹 التدريب على الاختبارات</li>
+                            <div class="mt-6 space-y-3">
+
+                                <button
+                                    class="w-full bg-[#5D9289] text-white py-3 rounded-xl font-bold flex justify-center items-center gap-2 hover:bg-[#4d7a72] transition shadow-sm"
+                                    data-lang="price_8_lessons">
+                                    <span>8 حصص ( سعر الحصة 56 ريال )</span>
+                                </button>
+
+                                <button
+                                    class="w-full bg-[#5D9289] text-white py-3 rounded-xl font-bold flex justify-center items-center gap-2 hover:bg-[#4d7a72] transition shadow-sm"
+                                    data-lang="price_2_lessons">
+                                    <span>2 حصص ( سعر الحصة 64 ريال )</span>
+                                </button>
+
+                                <button
+                                    class="w-full bg-[#5D9289] text-white py-3 rounded-xl font-bold flex justify-center items-center gap-2 hover:bg-[#4d7a72] transition shadow-sm border-2 border-transparent"
+                                    data-lang="price_urgent">
+                                    <span>حصة <span class="text-red-300">مستعجلة</span> اليوم ( سعر الحصة 76 ريال
+                                        )</span>
+                                </button>
+
+                            </div>
+                        </ul>
+                        <button
+                            class="w-full mt-8 py-4 bg-[#F1F5F9] text-[#4D8076] font-bold rounded-2xl hover:bg-[#4D8076] hover:text-white transition-colors">عرض
+                            التفاصيل</button>
+                    </div>
+                </div>
+
+                <div
+                    class="bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition-shadow border border-gray-100">
+                    <div class="relative h-48 bg-indigo-900">
+                        <img src="https://images.unsplash.com/photo-1609599006353-e629aaabfeae?auto=format&fit=crop&w=500&q=80"
+                            class="w-full h-full object-cover opacity-60" alt="quran">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <h3 class="text-white text-3xl font-bold" data-lang="pkg_quran_title">باقة القرآن الكريم
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="p-8 text-right">
+                        <div class="flex gap-4 text-xs text-gray-400 mb-4">
+                            <span data-lang="feat_comp">💻 كمبيوتر</span>
+                            <span data-lang="feat_ipad">📱 آيباد</span>
+                        </div>
+                        <h4 class="text-xl font-bold text-gray-800 mb-4" data-lang="pkg_quran_desc">معلم أو معلمة لمادة
+                            القرآن الكريم لتصحيح
+                            التلاوة ومتابعة الحفظ والتجويد :</h4>
+                        <ul class="space-y-3 text-gray-600">
+                            <li class="flex items-center gap-2" data-lang="feat_duration">🔹 مدة الحصة 60 دقيقة</li>
+                            <li class="flex items-center gap-2" data-lang="feat_pronunciation">🔹 تعليم النطق الصحيح
+                            </li>
+                            <li class="flex items-center gap-2" data-lang="feat_revision">🔹 مراجعة دورية للحفظ</li>
+                            <div class="mt-6 space-y-3">
+
+                                <button
+                                    class="w-full bg-[#5D9289] text-white py-3 rounded-xl font-bold flex justify-center items-center gap-2 hover:bg-[#4d7a72] transition shadow-sm"
+                                    data-lang="price_8_lessons">
+                                    <span>8 حصص ( سعر الحصة 56 ريال )</span>
+                                </button>
+
+                                <button
+                                    class="w-full bg-[#5D9289] text-white py-3 rounded-xl font-bold flex justify-center items-center gap-2 hover:bg-[#4d7a72] transition shadow-sm"
+                                    data-lang="price_2_lessons">
+                                    <span>2 حصص ( سعر الحصة 64 ريال )</span>
+                                </button>
+
+                                <button
+                                    class="w-full bg-[#5D9289] text-white py-3 rounded-xl font-bold flex justify-center items-center gap-2 hover:bg-[#4d7a72] transition shadow-sm border-2 border-transparent"
+                                    data-lang="price_urgent">
+                                    <span>حصة <span class="text-red-300">مستعجلة</span> اليوم ( سعر الحصة 76 ريال
+                                        )</span>
+                                </button>
+
+                            </div>
+                        </ul>
+
+                        <button
+                            class="w-full mt-8 py-4 bg-[#F1F5F9] text-[#4D8076] font-bold rounded-2xl hover:bg-[#4D8076] hover:text-white transition-colors">عرض
+                            التفاصيل</button>
+                    </div>
+                </div>
+
+                <div
+                    class="bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition-shadow border border-gray-100">
+                    <div class="relative h-48 bg-orange-900">
+                        <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=500&q=80"
+                            class="w-full h-full object-cover opacity-60" alt="kids">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <h3 class="text-white text-3xl font-bold" data-lang="pkg_kids_title">باقة تأسيس الأطفال</h3>
+                        </div>
+                    </div>
+                    <div class="p-8 text-right">
+                        <div class="flex gap-4 text-xs text-gray-400 mb-4">
+                            <span data-lang="feat_ipad">📱 آيباد</span>
+                            <span data-lang="feat_smart">📱 أجهزة ذكية</span>
+                        </div>
+                        <h4 class="text-xl font-bold text-gray-800 mb-4" data-lang="pkg_kids_desc">معلم أو معلمة لتأسيس
+                            الأطفال في كتابة وقراءة
+                            الحروف والأرقام :</h4>
+                        <ul class="space-y-3 text-gray-600">
+                            <li class="flex items-center gap-2" data-lang="feat_duration">🔹 مدة الحصة 60 دقيقة</li>
+                            <li class="flex items-center gap-2" data-lang="feat_explanation">🔹 شرح الدروس المستقبلية
+                            </li>
+                            <li class="flex items-center gap-2" data-lang="feat_pronunciation">🔹 تعليم النطق الصحيح
+                            </li>
+                            <div class="mt-6 space-y-3">
+
+                                <button
+                                    class="w-full bg-[#5D9289] text-white py-3 rounded-xl font-bold flex justify-center items-center gap-2 hover:bg-[#4d7a72] transition shadow-sm"
+                                    data-lang="price_8_lessons">
+                                    <span>8 حصص ( سعر الحصة 56 ريال )</span>
+                                </button>
+
+                                <button
+                                    class="w-full bg-[#5D9289] text-white py-3 rounded-xl font-bold flex justify-center items-center gap-2 hover:bg-[#4d7a72] transition shadow-sm"
+                                    data-lang="price_2_lessons">
+                                    <span>2 حصص ( سعر الحصة 64 ريال )</span>
+                                </button>
+
+                                <button
+                                    class="w-full bg-[#5D9289] text-white py-3 rounded-xl font-bold flex justify-center items-center gap-2 hover:bg-[#4d7a72] transition shadow-sm border-2 border-transparent"
+                                    data-lang="price_urgent">
+                                    <span>حصة <span class="text-red-300">مستعجلة</span> اليوم ( سعر الحصة 76 ريال
+                                        )</span>
+                                </button>
+
+                            </div>
+                        </ul>
+                        <button
+                            class="w-full mt-8 py-4 bg-[#F1F5F9] text-[#4D8076] font-bold rounded-2xl hover:bg-[#4D8076] hover:text-white transition-colors">عرض
+                            التفاصيل</button>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <div class="card-header" style="background-image: url('path-to-your-image.jpg');">
+                        <div class="overlay">
+                            <h3>باقة القرآن الكريم</h3>
+                        </div>
+                    </div>
+
+                    <div class="card-body">
+                        <div class="platform-icons">
+                            <span>💻 كمبيوتر</span>
+                            <span>📱 آيباد</span>
+                            <span>🤖 أجهزة ذكية</span>
+                        </div>
+
+                        <p class="teacher-info">معلم أو معلمة لمادة القرآن الكريم لجميع صفوف المرحلة المتوسطة :</p>
+
+                        <ul class="features-list">
+                            <li>مدة الحصة 60 دقيقة</li>
+                            <li>متابعة الدروس</li>
+                            <li>تعليم النطق الصحيح</li>
+                            <li>معلمين ذوي خبرة</li>
+                            <li>حصص تفاعلية</li>
+                        </ul>
+                    </div>
+
+                    <div class="card-footer">
+                        <button class="price-btn">8 حصص ( سعر الحصة 56 ريال)</button>
+                        <button class="price-btn">2 حصص ( سعر الحصة 64 ريال)</button>
+                        <button class="price-btn urgent">حصة <span class="red-text">مستعجلة</span> اليوم ( سعر الحصة 76
+                            ريال)</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <section class="py-20 bg-[#F8F9FA] px-6">
+        <div class="container mx-auto">
+            <h2 class="text-4xl font-black text-center mb-12 text-gray-800" data-lang="why_us_title">لماذا منصة <span
+                    class="text-[#4D8076]">حصتك</span> الأفضل</h2>
+
+            <div class="bg-white rounded-[1.5rem] md:rounded-[2.5rem] shadow-2xl shadow-gray-200/50 p-6 md:p-16">
+                <div class="grid grid-cols-2 md:grid-cols-5 gap-6 md:gap-8 text-center">
+
+                    <div class="flex flex-col items-center group">
+                        <div class="mb-6 text-[#5D9289] text-4xl group-hover:scale-110 transition-transform">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-black mb-4 text-gray-800" data-lang="why_price">السعر</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed" data-lang="why_price_desc">باقات بأسعار مناسبة
+                            للجميع</p>
+                    </div>
+
+                    <div class="flex flex-col items-center group">
+                        <div class="mb-6 text-[#5D9289] text-4xl group-hover:scale-110 transition-transform">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-black mb-4 text-gray-800" data-lang="why_supervision">إشراف</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed" data-lang="why_supervision_desc">فريق إشرافي
+                            وأكاديمي لتقييم مستوى تقديم الخدمات
+                            ومعالجة ملاحظات الطلاب والطالبات</p>
+                    </div>
+
+                    <div class="flex flex-col items-center group">
+                        <div class="mb-6 text-[#5D9289] text-4xl group-hover:scale-110 transition-transform">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-black mb-4 text-gray-800" data-lang="why_time">الوقت</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed" data-lang="why_time_desc">مرونة في اختيار وقت
+                            الحصص وتغيير المعلم الخاص
+                            وبشكل فوري</p>
+                    </div>
+
+                    <div class="flex flex-col items-center group">
+                        <div class="mb-6 text-[#5D9289] text-4xl group-hover:scale-110 transition-transform">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-black mb-4 text-gray-800" data-lang="why_teaching">التدريس</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed" data-lang="why_teaching_desc">شرح الدروس
+                            والتسميع والمساعدة في حل الواجبات
+                            وإعداد البحوث والمطويات والتدريب على الاختبارات</p>
+                    </div>
+
+                    <div class="flex flex-col items-center group">
+                        <div class="mb-6 text-[#5D9289] text-4xl group-hover:scale-110 transition-transform">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-black mb-4 text-gray-800" data-lang="why_quality">الجودة</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed" data-lang="why_quality_desc">معلمين ومعلمات
+                            حاصلين على الشهادات العلمية التي
+                            تمكنهم من تقديم الدروس الخصوصية</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="py-20 bg-[#F8F9FA] px-6">
+        <div class="container mx-auto">
+            <h2 class="text-4xl font-black text-center mb-16 text-gray-800">تقييم العملاء</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+                <div
+                    class="bg-white p-8 rounded-[2rem] shadow-xl shadow-gray-200/40 relative flex flex-col justify-between">
+                    <div>
+                        <div class="text-5xl text-gray-200 font-serif absolute top-6 left-8 rotate-180">"</div>
+                        <p class="text-gray-600 leading-relaxed text-lg mb-8 relative z-10" data-lang="testim_1">
+                            ومع نهاية الترم الثاني شكراً لكم فعلاً ارتحت كثير وبنتي تفوقت كثير بالدرجات وزاد حماسها
+                            للمذاكرة والمعلمات مره متعاونات وما ينهون الحصة إلا ومتأكدين من فهمها للدرس ويعطون فوق الوقت
+                            لاحظت انهم جداً جداً مهتمين بالتعليم.
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-4 mt-4 border-t pt-6">
+                        <div
+                            class="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center overflow-hidden">
+                            <svg class="w-8 h-8 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        <span class="font-bold text-gray-700" data-lang="testim_1_author">والدة طفلين</span>
+                    </div>
+                </div>
+
+                <div
+                    class="bg-white p-8 rounded-[2rem] shadow-xl shadow-gray-200/40 relative flex flex-col justify-between">
+                    <div>
+                        <div class="text-5xl text-gray-200 font-serif absolute top-6 left-8 rotate-180">"</div>
+                        <p class="text-gray-600 leading-relaxed text-lg mb-8 relative z-10" data-lang="testim_2">
+                            تجربتي مع منصة معلمي رائعة جداً بدأت قبل الاختبارات النصف الأول بأسبوع، أخذت 4 حصص مكثفة
+                            وقدرت أجيب درجة عالية النصف الثاني أشتركت من البداية والحمد لله درجاتي كاملة والمعلمة مرة
+                            شاطرة وتوصل المعلومة بطريقة مبسطة مرة.
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-4 mt-4 border-t pt-6">
+                        <div
+                            class="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center overflow-hidden">
+                            <svg class="w-8 h-8 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        <span class="font-bold text-gray-700" data-lang="testim_2_author">طالبة أول ثانوي</span>
+                    </div>
+                </div>
+
+                <div
+                    class="bg-white p-8 rounded-[2rem] shadow-xl shadow-gray-200/40 relative flex flex-col justify-between">
+                    <div>
+                        <div class="text-5xl text-gray-200 font-serif absolute top-6 left-8 rotate-180">"</div>
+                        <p class="text-gray-600 leading-relaxed text-lg mb-8 relative z-10" data-lang="testim_3">
+                            ماشاء الله منصة معلمي أكثر من رائعة 😍 المعلمات جداً رائعات في شرحهم 👌 ماقد طلعت من الحصة
+                            إلا وأنا فاهمه 👩‍🏫 الدرس ماشاء الله .
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-4 mt-4 border-t pt-6">
+                        <div
+                            class="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center overflow-hidden">
+                            <svg class="w-8 h-8 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        <span class="font-bold text-gray-700" data-lang="testim_3_author">لمى</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <section class="py-20 bg-[#F8F9FA] px-6 relative overflow-hidden">
+        <div class="absolute top-10 right-1/4 opacity-20 rotate-12 text-4xl">✏️</div>
+        <div class="absolute bottom-10 left-10 opacity-20 -rotate-12 text-4xl">📓</div>
+
+        <div class="container mx-auto">
+            <h2 class="text-4xl font-black text-center mb-16 text-gray-800 flex justify-center items-center gap-4"
+                data-lang="steps_title">
+                خطوات التسجيل في الموقع <span class="text-3xl">✏️</span>
+            </h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+                <div
+                    class="bg-white rounded-[2rem] shadow-xl shadow-gray-200/50 overflow-hidden group hover:-translate-y-2 transition-transform duration-300">
+                    <div class="h-56 bg-[#FDF2F0] flex items-center justify-center p-6">
+                        <div
+                            class="relative w-full h-full bg-[#F5E6E3] rounded-xl flex items-center justify-center border-b-4 border-gray-200">
+                            <div class="w-1/2 h-2/3 bg-white rounded-md shadow-sm p-2">
+                                <div class="w-full h-2 bg-gray-100 mb-2"></div>
+                                <div class="w-2/3 h-2 bg-gray-100"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-8 text-center">
+                        <h3 class="text-xl font-black text-gray-700" data-lang="step_register">التسجيل في الموقع</h3>
+                    </div>
+                </div>
+
+                <div
+                    class="bg-white rounded-[2rem] shadow-xl shadow-gray-200/50 overflow-hidden group hover:-translate-y-2 transition-transform duration-300">
+                    <div class="h-56 bg-[#E6EFED] flex items-center justify-center p-6">
+                        <div class="w-full h-full bg-[#D8E4E1] rounded-xl flex flex-col gap-2 p-6">
+                            <div class="w-full h-4 bg-white/50 rounded shadow-inner"></div>
+                            <div class="w-full h-4 bg-white rounded shadow-sm flex items-center px-2">
+                                <div class="w-2 h-2 bg-[#4D8076] rounded-full"></div>
+                            </div>
+                            <div class="w-full h-4 bg-white/50 rounded shadow-inner"></div>
+                        </div>
+                    </div>
+                    <div class="p-8 text-center">
+                        <h3 class="text-xl font-black text-gray-700" data-lang="step_choose">اختيار الباقة والمعلم</h3>
+                    </div>
+                </div>
+
+                <div
+                    class="bg-white rounded-[2rem] shadow-xl shadow-gray-200/50 overflow-hidden group hover:-translate-y-2 transition-transform duration-300">
+                    <div class="h-56 bg-[#EAE0E0] flex items-center justify-center p-6">
+                        <div
+                            class="relative w-40 h-24 bg-[#D1C2C2] rounded-lg border-2 border-white flex items-center justify-end p-2">
+                            <div class="w-8 h-8 bg-gray-700 rounded-sm"></div>
+                        </div>
+                    </div>
+                    <div class="p-8 text-center">
+                        <h3 class="text-xl font-black text-gray-700" data-lang="step_pay">السداد وبدء الدروس</h3>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <section class="py-16 bg-white px-6">
+        <div class="container mx-auto flex flex-col lg:flex-row gap-8">
+
+            <div class="w-full lg:w-2/3 grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+
+                <div
+                    class="bg-white p-8 rounded-[2rem] shadow-lg shadow-gray-100 border border-gray-50 text-center flex flex-col items-center">
+                    <div class="w-16 h-16 bg-[#8B2323] rounded-full flex items-center justify-center mb-6">
+                        <img src="https://img.icons8.com/ios-filled/50/ffffff/light-on.png" class="w-8 h-8"
+                            alt="experience">
+                    </div>
+                    <h3 class="text-xl font-black mb-4" data-lang="feat_exp">التجربة</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed" data-lang="feat_exp_desc">يقدم تجربة تعليمية فريدة
+                        وفردية</p>
+                </div>
+
+                <div
+                    class="bg-white p-8 rounded-[2rem] shadow-lg shadow-gray-100 border border-gray-50 text-center flex flex-col items-center">
+                    <div class="w-16 h-16 bg-black rounded-full flex items-center justify-center mb-6">
+                        <img src="https://img.icons8.com/ios-filled/50/ffffff/user-credentials.png" class="w-8 h-8"
+                            alt="habits">
+                    </div>
+                    <h3 class="text-xl font-black mb-4" data-lang="feat_habits">العادات</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed" data-lang="feat_habits_desc">يزيد من عادات الدراسة
+                        الجيدة</p>
+                </div>
+
+                <div
+                    class="bg-white p-8 rounded-[2rem] shadow-lg shadow-gray-100 border border-gray-50 text-center flex flex-col items-center">
+                    <div class="w-16 h-16 bg-gray-400 rounded-full flex items-center justify-center mb-6">
+                        <img src="https://img.icons8.com/ios-filled/50/ffffff/conference-call.png" class="w-8 h-8"
+                            alt="performance">
+                    </div>
+                    <h3 class="text-xl font-black mb-4" data-lang="feat_performance">الأداء</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed" data-lang="feat_perf_desc">يحسن الأداء الأكاديمي
+                        والنمو الشخصي</p>
+                </div>
+
+                <div
+                    class="bg-white p-8 rounded-[2rem] shadow-lg shadow-gray-100 border border-gray-50 text-center flex flex-col items-center">
+                    <div class="w-16 h-16 bg-[#D98E73] rounded-full flex items-center justify-center mb-6">
+                        <img src="https://img.icons8.com/ios-filled/50/ffffff/gender-neutral-user.png" class="w-8 h-8"
+                            alt="thinking">
+                    </div>
+                    <h3 class="text-xl font-black mb-4" data-lang="feat_thinking">التفكير</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed" data-lang="feat_think_desc">يشجع على مستوى أعلى من
+                        التفكير</p>
+                </div>
+
+                <div
+                    class="bg-white p-8 rounded-[2rem] shadow-lg shadow-gray-100 border border-gray-50 text-center flex flex-col items-center">
+                    <div class="w-16 h-16 bg-[#5D9289] rounded-full flex items-center justify-center mb-6">
+                        <img src="https://img.icons8.com/ios-filled/50/ffffff/graduation-cap.png" class="w-8 h-8"
+                            alt="learning">
+                    </div>
+                    <h3 class="text-xl font-black mb-4" data-lang="feat_learning">التعلم</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed" data-lang="feat_learn_desc">يساعد على أن تصبح
+                        متعلماً مستقلاً</p>
+                </div>
+
+                <div
+                    class="bg-white p-8 rounded-[2rem] shadow-lg shadow-gray-100 border border-gray-50 text-center flex flex-col items-center">
+                    <div class="w-16 h-16 bg-black rounded-full flex items-center justify-center mb-6">
+                        <img src="https://img.icons8.com/ios-filled/50/ffffff/classroom.png" class="w-8 h-8"
+                            alt="school">
+                    </div>
+                    <h3 class="text-xl font-black mb-4" data-lang="feat_school">المدرسة</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed" data-lang="feat_school_desc">يدعم التعلم داخل الفصل
+                    </p>
+                </div>
+
+            </div>
+
+            <div
+                class="w-full lg:w-1/3 bg-[#5D9289] rounded-[2.5rem] p-12 text-white flex flex-col justify-center relative overflow-hidden">
+                <div class="absolute top-4 right-4 opacity-20 w-24 h-24 border-2 border-white rounded-lg rotate-12">
+                </div>
+                <div class="absolute bottom-4 left-4 opacity-20 w-16 h-16 border-2 border-white rounded-full"></div>
+
+                <h2 class="text-6xl font-black leading-tight mb-4 relative z-10" data-lang="quote_title">الاستثمار في
+                    تعليم الأبناء</h2>
+                <div class="w-20 h-2 bg-white/30 rounded-full mb-8"></div>
+                <p class="text-white/80 text-xl font-medium leading-relaxed italic" data-lang="quote_body">
+                    "أفضل استثمار هو ما تضعه في عقول أبنائك اليوم ليحصدوا ثماره غداً"
+                </p>
+            </div>
+
+        </div>
+    </section>
+    <footer class="bg-black text-white pt-16 pb-8 px-6 mt-20">
+        <div class="container mx-auto">
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12 text-right mb-12">
+
+                <div class="md:col-span-1">
+                    <div class="flex items-center justify-end mb-6">
+                        <span class="text-3xl font-black text-[#5D9289]" data-lang="logo_name">حصتك<span
+                                class="text-[#D98E73]">.</span></span>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed" data-lang="footer_desc">
+                        المنصة العربية الأولى التي توفر أفضل المعلمين والمعلمات لتقديم الدروس الخاصة للطلاب والطالبات في
+                        منطقة الخليج العربي بأسعار منافسة، ومرونة عالية تتيح إمكانية تغيير المعلمين واختيار الأوقات
+                        المناسبة للحصول على الدروس الخاصة بما يحقق التفوق العلمي للطلاب والطالبات في مسيرتهم التعليمية.
+                    </p>
+
+                    <div class="mt-8 flex flex-col gap-3 items-end">
+                        <h4 class="font-bold mb-2" data-lang="contact_us">تواصل معنا</h4>
+                        <div class="flex gap-4 mb-4">
+                            <a href="https://x.com/moalimy_portal" target="_blank"
+                                class="w-8 h-8 flex items-center justify-center bg-[#1DA1F2] rounded-full hover:scale-110 transition"><img
+                                    src="https://img.icons8.com/ios-filled/24/ffffff/twitter.png" class="w-4 h-4" /></a>
+                            <a href="https://www.instagram.com/moalimy.portal/" target="_blank"
+                                class="w-8 h-8 flex items-center justify-center bg-gradient-to-tr from-yellow-400 via-red-500 to-purple-500 rounded-full hover:scale-110 transition"><img
+                                    src="https://img.icons8.com/ios-filled/24/ffffff/instagram-new.png"
+                                    class="w-4 h-4" /></a>
+                            <a href="https://www.tiktok.com/@moalimy" target="_blank"
+                                class="w-8 h-8 flex items-center justify-center bg-black border border-white rounded-full hover:scale-110 transition"><img
+                                    src="https://img.icons8.com/ios-filled/24/ffffff/tiktok.png" class="w-4 h-4" /></a>
+                        </div>
+                        <div class="flex gap-3">
+                            <a href="https://apps.apple.com/us/app/%D9%85%D8%B9%D9%84%D9%85%D9%8A/id6654920904"
+                                target="_blank">
+                                <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
+                                    class="h-10 cursor-pointer" alt="App Store">
+                            </a>
+                            <a href="https://play.google.com/store/apps/details?id=com.select.moalimy&pli=1"
+                                target="_blank">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
+                                    class="h-10 cursor-pointer" alt="Google Play">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-black mb-8 border-b border-gray-800 pb-2 inline-block"
+                        data-lang="about_title">عن حصتك </h3>
+                    <ul class="space-y-4 text-gray-400">
+                        <li><a href="index.html" class="hover:text-white transition" data-lang="home">الصفحة
+                                الرئيسية</a></li>
+                        <li><a href="login.html" class="hover:text-white transition" data-lang="reg_students">التسجيل
+                                للطلاب
+                                والطالبات</a></li>
+                        <li><a href="login2.html" class="hover:text-white transition" data-lang="reg_teachers">التسجيل
+                                للمعلمين
+                                والمعلمات</a></li>
+                        <li><a href="login_tsh.html" class="hover:text-white transition"
+                                data-lang="reg_marketer">التسجيل كمسوق</a>
+                        </li>
+                        <li><a href="subscriptions.html" class="hover:text-white transition"
+                                data-lang="subscriptions">الاشتراكات</a>
+                        </li>
+                        <li><a href="course_guide.html" class="hover:text-white transition"
+                                data-lang="course_guide">دليل تعريف
+                                المقررات</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-black mb-8 border-b border-gray-800 pb-2 inline-block"
+                        data-lang="more_title">المزيد</h3>
+                    <ul class="space-y-4 text-gray-400">
+                        <li><a href="about_us.html" class="hover:text-white transition" data-lang="about_platform">حول
+                                المنصة</a>
+                        </li>
+                        <li><a href="contact_us.html" class="hover:text-white transition" data-lang="contact_us">تواصل
+                                معنا</a></li>
+                        <li><a href="faq.html" class="hover:text-white transition" data-lang="faq">الأسئلة الشائعة</a>
+                        </li>
+                        <li><a href="how_it_works.html" class="hover:text-white transition" data-lang="how_it_works">كيف
+                                تعمل المنصة</a>
+                        </li>
+                        <li><a href="terms.html" class="hover:text-white transition" data-lang="terms">شروط وأحكام</a>
+                        </li>
+                        <li><a href="privacy.html" class="hover:text-white transition" data-lang="privacy">سياسة
+                                الخصوصية</a></li>
+                    </ul>
+                </div>
+
+                <div class="flex justify-center md:justify-end items-start">
+                    <img src="/path-to-official-logo.png" class="h-20 opacity-80" alt="hstk Logo">
+                </div>
+
+            </div>
+
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-6">
+
+                <div
+                    class="flex flex-wrap gap-4 items-center justify-center grayscale opacity-80 hover:grayscale-0 transition-all">
+                    <div class="bg-white px-3 py-1 rounded text-black text-[10px] font-bold">tabby</div>
+                    <div class="bg-white px-3 py-1 rounded text-black text-[10px] font-bold">tamara</div>
+                    <img src="https://img.icons8.com/color/48/000000/visa.png" class="h-6" />
+                    <img src="https://img.icons8.com/color/48/000000/mastercard.png" class="h-6" />
+                    <img src="https://img.icons8.com/color/48/000000/apple-pay.png" class="h-6" />
+                    <div class="bg-[#007AB7] px-2 py-1 rounded text-white text-[10px]">مدى mada</div>
+                </div>
+
+                <p class="text-gray-500 text-sm" data-lang="copyright">
+                    Copyright © 2026 <span class="text-white">moalimy.com</span> All Rights Reserved
+                </p>
+            </div>
+        </div>
+    </footer>
+    <script src="translations.js"></script>
+    <script src="index.js"></script>
+</body>
+
+</html>

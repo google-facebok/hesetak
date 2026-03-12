@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-lang="login_st_title">تسجيل الطلاب والطالبات - معلمي</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50">
+
+    <nav class="flex items-center justify-between px-4 md:px-8 py-4 shadow-sm bg-white sticky top-0 z-50">
+        <div class="flex items-center gap-2 md:gap-4">
+            <!-- Mobile Menu Button -->
+            <button id="mobileMenuBtn" class="lg:hidden text-gray-600 focus:outline-none">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+
+            <div class="font-bold text-xl md:text-2xl text-[#4D8076]" data-lang="logo_name">حصتك<span
+                    class="text-[#D98E73]">.</span></div>
+            <div class="h-10 w-[1px] bg-gray-200 mx-1 md:mx-2 hidden sm:block"></div>
+            <div class="text-[8px] md:text-[10px] leading-tight text-gray-500 hidden sm:block"
+                data-lang="accredited_by">
+                المنصة معتمدة من:<br>
+                <span class="font-bold text-gray-700 text-[10px] md:text-[12px]" data-lang="center_name">المركز الوطني
+                    للتعليم الإلكتروني</span>
+            </div>
+        </div>
+
+        <div class="hidden lg:flex items-center gap-3">
+            <button onclick="window.location.href='video.html'"
+                class="bg-[#D98E73] text-white px-5 py-2 rounded-full flex items-center gap-2 hover:bg-[#c57d63] transition shrink-0">
+                <span data-lang="nav_videos"><span>🎥</span> فيديوهات تعليمية</span>
+            </button>
+            <button onclick="window.location.href='boox.html'"
+                class="border border-gray-300 text-gray-600 px-5 py-2 rounded-full flex items-center gap-2 hover:bg-gray-50 shrink-0">
+                <span data-lang="nav_gifts"><span>🎁</span> بطاقات هدايا</span>
+            </button>
+            <div class="relative inline-block">
+                <span onclick="toggleMenu()" class="font-bold text-gray-400 px-2 cursor-pointer hover:text-gray-600"
+                    data-lang="lang_toggle">
+                    ع
+                </span>
+                <div id="langMenu" class="hidden absolute right-0 mt-2 w-32 bg-white border rounded shadow">
+                    <p class="px-3 py-2 hover:bg-gray-100 cursor-pointer" onclick="changeLanguage('ar')">العربية</p>
+                    <p class="px-3 py-2 hover:bg-gray-100 cursor-pointer" onclick="changeLanguage('en')">English</p>
+                    <p class="px-3 py-2 hover:bg-gray-100 cursor-pointer" onclick="changeLanguage('fr')">Français</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex items-center gap-2 md:gap-4">
+            <button onclick="window.location.href='login.html'"
+                class="bg-[#4D8076] text-white px-4 md:px-8 py-2 rounded-full font-bold hover:bg-[#3d665e] transition text-sm md:text-base"
+                data-lang="subscribe">
+                اشترك معنا
+            </button>
+            <button onclick="window.location.href='login2.html'"
+                class="bg-gray-100 text-gray-700 px-4 md:px-6 py-2 rounded-full font-medium hover:bg-gray-200 text-sm md:text-base hidden sm:block"
+                data-lang="login">
+                دخول
+            </button>
+            <div onclick="window.location.href='cart.html'" class="relative cursor-pointer">
+                <span
+                    class="absolute -top-2 -right-2 bg-black text-white text-[10px] w-5 h-5 flex items-center justify-center rounded-full">0</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-600" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+            </div>
+        </div>
+
+        <!-- Mobile Side Menu -->
+        <div id="sideMenu" class="fixed inset-0 bg-black bg-opacity-50 z-[60] hidden transition-opacity">
+            <div class="fixed top-0 right-0 h-full w-64 bg-white shadow-lg p-6 flex flex-col gap-6 transform translate-x-full transition-transform duration-300"
+                id="sideMenuContent">
+                <button id="closeMenuBtn" class="self-start text-gray-600">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+                <div class="flex flex-col gap-4">
+                    <a href="video.html" class="flex items-center gap-2 text-lg font-bold text-gray-700"
+                        data-lang="nav_videos"><span>🎥</span>
+                        فيديوهات تعليمية</a>
+                    <a href="boox.html" class="flex items-center gap-2 text-lg font-bold text-gray-700"
+                        data-lang="nav_gifts"><span>🎁</span>
+                        بطاقات هدايا</a>
+                    <a href="login2.html" class="flex items-center gap-2 text-lg font-bold text-gray-700 sm:hidden"
+                        data-lang="login"><span>👤</span>
+                        دخول</a>
+                    <hr>
+                    <div class="flex flex-col gap-2">
+                        <p class="font-bold text-gray-400" data-lang="lang_label">اللغة</p>
+                        <p class="px-3 py-2 hover:bg-gray-100 cursor-pointer rounded" onclick="changeLanguage('ar')">
+                            العربية</p>
+                        <p class="px-3 py-2 hover:bg-gray-100 cursor-pointer rounded" onclick="changeLanguage('en')">
+                            English</p>
+                        <p class="px-3 py-2 hover:bg-gray-100 cursor-pointer rounded" onclick="changeLanguage('fr')">
+                            Français</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="min-h-screen flex flex-col md:flex-row">
+
+        <div class="hidden md:flex md:w-1/2 bg-white items-center justify-center p-12">
+            <div class="max-w-md text-center">
+                <img src="https://img.freepik.com/free-vector/happy-students-reading-books-stack_74855-5285.jpg"
+                    alt="education illustration" class="w-full h-auto mb-8">
+                <div class="flex justify-center gap-4 opacity-30">
+                    <span class="text-4xl">✨</span>
+                    <span class="text-4xl">📚</span>
+                    <span class="text-4xl">🎓</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="w-full md:w-1/2 flex flex-col items-center justify-center p-6 md:p-16">
+            <div class="w-full max-w-lg bg-white md:bg-transparent p-8 md:p-0 rounded-3xl shadow-lg md:shadow-none">
+
+                <h1 class="text-2xl font-black text-center mb-8 text-gray-800" data-lang="title_student_reg">التسجيل
+                    للطلاب والطالبات</h1>
+
+                <div class="space-y-3 mb-8">
+                    <button
+                        class="w-full border border-gray-300 py-3 rounded-lg flex items-center justify-center gap-3 hover:bg-gray-50 transition font-bold text-gray-600"
+                        data-lang="login_google">
+                        <img src="https://img.icons8.com/color/24/000000/google-logo.png" class="w-5 h-5" />
+                        المتابعة باستخدام جوجل
+                    </button>
+                    <button
+                        class="w-full bg-black text-white py-3 rounded-lg flex items-center justify-center gap-3 hover:bg-gray-900 transition font-bold"
+                        data-lang="login_apple">
+                        <img src="https://img.icons8.com/ios-filled/24/ffffff/apple-logo.png" class="w-5 h-5" />
+                        المتابعة باستخدام آبل
+                    </button>
+                </div>
+
+                <div class="relative flex items-center justify-center mb-8">
+                    <div class="flex-grow border-t border-gray-200"></div>
+                    <span class="px-4 text-xs text-gray-400 bg-white md:bg-gray-50" data-lang="register_hint">نأمل تعبئة
+                        الحقول وإكمال عملية
+                        التسجيل</span>
+                    <div class="flex-grow border-t border-gray-200"></div>
+                </div>
+
+                <form class="space-y-4 text-right">
+                    <div>
+                        <input type="text" placeholder="يرجى إدخال الإسم" data-lang="field_name_placeholder"
+                            class="w-full p-4 bg-gray-50 border border-gray-100 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#4D8076] transition">
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <select
+                            class="w-full p-4 bg-gray-50 border border-gray-100 rounded-xl focus:outline-none text-gray-500">
+                            <option data-lang="field_grade_select">المرحلة الدراسية</option>
+                        </select>
+                        <select
+                            class="w-full p-4 bg-gray-50 border border-gray-100 rounded-xl focus:outline-none text-gray-500">
+                            <option data-lang="field_class_select">اختر الصف الدراسي</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <input type="email" placeholder="يرجى إدخال البريد الإلكتروني"
+                            data-lang="field_email_placeholder"
+                            class="w-full p-4 bg-gray-50 border border-gray-100 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#4D8076] transition">
+                    </div>
+
+                    <div>
+                        <input type="email" placeholder="إعادة إدخال البريد الإلكتروني"
+                            data-lang="field_email_confirm_placeholder"
+                            class="w-full p-4 bg-gray-50 border border-gray-100 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#4D8076] transition">
+                    </div>
+
+                    <div class="flex gap-2">
+                        <select id="countryCode"
+                            class="w-1/4 p-4 bg-gray-50 border border-gray-100 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#4D8076] transition text-sm">
+                            <optgroup label="دول الخليج">
+                                <option value="+966" selected>🇸🇦 +966</option>
+                                <option value="+971">🇦🇪 +971</option>
+                                <option value="+965">🇰🇼 +965</option>
+                                <option value="+974">🇶🇦 +974</option>
+                                <option value="+973">🇧🇭 +973</option>
+                                <option value="+968">🇴🇲 +968</option>
+                            </optgroup>
+                            <optgroup label="الدول العربية">
+                                <option value="+962">🇯🇴 +962</option>
+                                <option value="+961">🇱🇧 +961</option>
+                                <option value="+963">🇸🇾 +963</option>
+                                <option value="+964">🇮🇶 +964</option>
+                                <option value="+970">🇵🇸 +970</option>
+                                <option value="+20">🇪🇬 +20</option>
+                                <option value="+212">🇲🇦 +212</option>
+                                <option value="+213">🇩🇿 +213</option>
+                                <option value="+216">🇹🇳 +216</option>
+                                <option value="+249">🇸🇩 +249</option>
+                                <option value="+218">🇱🇾 +218</option>
+                            </optgroup>
+                            <optgroup label="دول أخرى">
+                                <option value="+1">🇺🇸 +1</option>
+                                <option value="+44">🇬🇧 +44</option>
+                                <option value="+90">🇹🇷 +90</option>
+                                <option value="+33">🇫🇷 +33</option>
+                                <option value="+49">🇩🇪 +49</option>
+                                <option value="+91">🇮🇳 +91</option>
+                            </optgroup>
+                        </select>
+
+                        <input type="tel" id="phone_input" placeholder="يرجى إدخال رقم الجوال"
+                            data-lang="field_phone_placeholder"
+                            class="w-3/4 p-4 bg-gray-50 border border-gray-100 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#4D8076] transition text-right">
+                    </div>
+
+                    <script>
+                        // تأكد من إضافة هذا السطر داخل الـ translations object في الكود السابق
+                        // ar: { field_phone_placeholder: "يرجى إدخال رقم الجوال" }
+                        // en: { field_phone_placeholder: "Please enter phone number" }
+                        // fr: { field_phone_placeholder: "Veuillez entrer le numéro" }
+                    </script>
+
+                    <div>
+                        <select id="timezoneSelect"
+                            class="w-full p-4 bg-gray-50 border border-gray-100 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#4D8076] text-gray-600 appearance-none cursor-pointer">
+
+                            <optgroup label="توقيت الخليج (UTC +03:00)">
+                                <option value="Asia/Riyadh" selected>🇸🇦 المملكة العربية السعودية (+03:00)</option>
+                                <option value="Asia/Kuwait">🇰🇼 الكويت (+03:00)</option>
+                                <option value="Asia/Qatar">🇶🇦 قطر (+03:00)</option>
+                                <option value="Asia/Bahrain">🇧🇭 البحرين (+03:00)</option>
+                                <option value="Asia/Baghdad">🇮🇶 العراق (+03:00)</option>
+                            </optgroup>
+
+                            <optgroup label="توقيت الإمارات وعُمان (UTC +04:00)">
+                                <option value="Asia/Dubai">🇦🇪 الإمارات العربية المتحدة (+04:00)</option>
+                                <option value="Asia/Muscat">🇴🇲 سلطنة عُمان (+04:00)</option>
+                            </optgroup>
+
+                            <optgroup label="توقيت مصر وبلاد الشام (UTC +02:00)">
+                                <option value="Africa/Cairo">🇪🇬 مصر (+02:00)</option>
+                                <option value="Asia/Amman">🇯🇴 الأردن (+02:00)</option>
+                                <option value="Asia/Beirut">🇱🇧 لبنان (+02:00)</option>
+                                <option value="Asia/Damascus">🇸🇾 سوريا (+02:00)</option>
+                                <option value="Asia/Gaza">🇵🇸 فلسطين (+02:00)</option>
+                            </optgroup>
+
+                            <optgroup label="توقيت المغرب العربي">
+                                <option value="Africa/Tunis">🇹🇳 تونس (+01:00)</option>
+                                <option value="Africa/Algiers">🇩🇿 الجزائر (+01:00)</option>
+                                <option value="Africa/Casablanca">🇲🇦 المغرب (+00:00)</option>
+                            </optgroup>
+
+                            <optgroup label="أخرى">
+                                <option value="UTC">التوقيت العالمي (UTC)</option>
+                            </optgroup>
+                        </select>
+                    </div>
+
+                    <script>
+                        // لإضافة الترجمة لهذا الحقل في الـ Dictionary الخاص بك:
+                        /*
+                        ar: {
+                            field_timezone: "المنطقة الزمنية"
+                        },
+                        en: {
+                            field_timezone: "Time Zone"
+                        }
+                        */
+                    </script>
+
+                    <div class="relative">
+                        <input type="password" placeholder="يرجى إدخال كلمة المرور"
+                            data-lang="field_password_placeholder"
+                            class="w-full p-4 bg-gray-50 border border-gray-100 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#4D8076] transition">
+                        <span class="absolute left-4 top-4 text-gray-400 cursor-pointer">👁️</span>
+                    </div>
+
+                    <div class="flex items-start gap-2 py-2">
+                        <input type="checkbox" class="mt-1 accent-[#4D8076]">
+                        <label class="text-[10px] text-gray-500 leading-relaxed" data-lang="terms_text">
+                            بالضغط على "تسجيل"، فإنك توافق على شروط استخدام منصة معلمي وتقر بأنك قرأت سياسة الخصوصية،
+                            كما توافق أيضاً على تلقي وسائل التواصل الإلكتروني أو المكالمات أو الرسائل النصية القصيرة من
+                            منصة معلمي، إلى البريد الإلكتروني والجوال الذي قدمته وذلك للأغراض الإعلانية أو لتوفير
+                            الموافقة على تلقي الرسائل التسويقية، ليست شرطاً لاستخدام خدمات منصة معلمي، أنت تدرك أنه
+                            يمكنك إلغاء الاشتراك من خلال إرسال طلب لإدارة منصة معلمي.
+                        </label>
+                    </div>
+
+                    <button type="submit"
+                        class="w-full bg-[#4D8076] text-white py-4 rounded-xl font-bold text-lg hover:bg-[#3d665e] transition shadow-lg shadow-green-100"
+                        data-lang="btn_register_submit">
+                        تسجيل
+                    </button>
+                </form>
+
+                <div class="mt-8 text-center space-y-2">
+                    <p class="text-gray-500 text-sm"><span data-lang="login_redirect">إذا كنت مسجلاً مسبقاً، يمكنك
+                            الدخول مباشرة للمنصة من خلال الضغط على</span>
+                        <a href="login2.html" class="text-[#4D8076] font-bold underline" data-lang="login_link">تسجيل
+                            الدخول</a>
+                    </p>
+                    <p class="text-sm"><a href="login_tsh.html" class="text-[#4D8076] font-bold underline"
+                            data-lang="teacher_reg_link">التسجيل كمعلم أو معلمة</a>
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <footer class="bg-black text-white pt-16 pb-8 px-6 mt-20">
+        <div class="container mx-auto">
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12 text-right mb-12">
+
+                <div class="md:col-span-1">
+                    <div class="flex items-center justify-end mb-6">
+                        <span class="text-3xl font-black text-[#5D9289]" data-lang="logo_name">حصتك<span
+                                class="text-[#D98E73]">.</span></span>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed" data-lang="footer_desc">
+                        المنصة العربية الأولى التي توفر أفضل المعلمين والمعلمات لتقديم الدروس الخاصة للطلاب والطالبات في
+                        منطقة الخليج العربي بأسعار منافسة، ومرونة عالية تتيح إمكانية تغيير المعلمين واختيار الأوقات
+                        المناسبة للحصول على الدروس الخاصة بما يحقق التفوق العلمي للطلاب والطالبات في مسيرتهم التعليمية.
+                    </p>
+
+                    <div class="mt-8 flex flex-col gap-3 items-end">
+                        <h4 class="font-bold mb-2" data-lang="contact_us">تواصل معنا</h4>
+                        <div class="flex gap-4 mb-4">
+                            <a href="https://x.com/moalimy_portal" target="_blank"
+                                class="w-8 h-8 flex items-center justify-center bg-[#1DA1F2] rounded-full hover:scale-110 transition"><img
+                                    src="https://img.icons8.com/ios-filled/24/ffffff/twitter.png" class="w-4 h-4" /></a>
+                            <a href="https://www.instagram.com/moalimy.portal/" target="_blank"
+                                class="w-8 h-8 flex items-center justify-center bg-gradient-to-tr from-yellow-400 via-red-500 to-purple-500 rounded-full hover:scale-110 transition"><img
+                                    src="https://img.icons8.com/ios-filled/24/ffffff/instagram-new.png"
+                                    class="w-4 h-4" /></a>
+                            <a href="https://www.tiktok.com/@moalimy" target="_blank"
+                                class="w-8 h-8 flex items-center justify-center bg-black border border-white rounded-full hover:scale-110 transition"><img
+                                    src="https://img.icons8.com/ios-filled/24/ffffff/tiktok.png" class="w-4 h-4" /></a>
+                        </div>
+                        <div class="flex gap-3">
+                            <a href="https://apps.apple.com/us/app/%D9%85%D8%B9%D9%84%D9%85%D9%8A/id6654920904"
+                                target="_blank">
+                                <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
+                                    class="h-10 cursor-pointer" alt="App Store">
+                            </a>
+                            <a href="https://play.google.com/store/apps/details?id=com.select.moalimy&pli=1"
+                                target="_blank">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
+                                    class="h-10 cursor-pointer" alt="Google Play">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-black mb-8 border-b border-gray-800 pb-2 inline-block"
+                        data-lang="about_title">عن حصتك </h3>
+                    <ul class="space-y-4 text-gray-400">
+                        <li><a href="index.html" class="hover:text-white transition" data-lang="home">الصفحة
+                                الرئيسية</a></li>
+                        <li><a href="login.html" class="hover:text-white transition" data-lang="reg_students">التسجيل
+                                للطلاب
+                                والطالبات</a></li>
+                        <li><a href="login2.html" class="hover:text-white transition" data-lang="reg_teachers">التسجيل
+                                للمعلمين
+                                والمعلمات</a></li>
+                        <li><a href="login_tsh.html" class="hover:text-white transition"
+                                data-lang="reg_marketer">التسجيل كمسوق</a>
+                        </li>
+                        <li><a href="subscriptions.html" class="hover:text-white transition"
+                                data-lang="subscriptions">الاشتراكات</a>
+                        </li>
+                        <li><a href="course_guide.html" class="hover:text-white transition"
+                                data-lang="course_guide">دليل تعريف
+                                المقررات</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-black mb-8 border-b border-gray-800 pb-2 inline-block"
+                        data-lang="more_title">المزيد</h3>
+                    <ul class="space-y-4 text-gray-400">
+                        <li><a href="about_us.html" class="hover:text-white transition" data-lang="about_platform">حول
+                                المنصة</a>
+                        </li>
+                        <li><a href="contact_us.html" class="hover:text-white transition" data-lang="contact_us">تواصل
+                                معنا</a></li>
+                        <li><a href="faq.html" class="hover:text-white transition" data-lang="faq">الأسئلة الشائعة</a>
+                        </li>
+                        <li><a href="how_it_works.html" class="hover:text-white transition" data-lang="how_it_works">كيف
+                                تعمل المنصة</a>
+                        </li>
+                        <li><a href="terms.html" class="hover:text-white transition" data-lang="terms">شروط وأحكام</a>
+                        </li>
+                        <li><a href="privacy.html" class="hover:text-white transition" data-lang="privacy">سياسة
+                                الخصوصية</a></li>
+                    </ul>
+                </div>
+
+                <div class="flex justify-center md:justify-end items-start">
+                    <img src="/path-to-official-logo.png" class="h-20 opacity-80" alt="hstk Logo">
+                </div>
+
+            </div>
+
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-6">
+
+                <div
+                    class="flex flex-wrap gap-4 items-center justify-center grayscale opacity-80 hover:grayscale-0 transition-all">
+                    <div class="bg-white px-3 py-1 rounded text-black text-[10px] font-bold">tabby</div>
+                    <div class="bg-white px-3 py-1 rounded text-black text-[10px] font-bold">tamara</div>
+                    <img src="https://img.icons8.com/color/48/000000/visa.png" class="h-6" />
+                    <img src="https://img.icons8.com/color/48/000000/mastercard.png" class="h-6" />
+                    <img src="https://img.icons8.com/color/48/000000/apple-pay.png" class="h-6" />
+                    <div class="bg-[#007AB7] px-2 py-1 rounded text-white text-[10px]">مدى mada</div>
+                </div>
+
+                <p class="text-gray-500 text-sm" data-lang="copyright">
+                    Copyright © 2026 <span class="text-white">moalimy.com</span> All Rights Reserved
+                </p>
+            </div>
+        </div>
+    </footer>
+    <script src="translations.js"></script>
+    <script src="index.js"></script>
+
+</body>
+
+</html>
